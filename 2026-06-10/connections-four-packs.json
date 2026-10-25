@@ -1,0 +1,20 @@
+{
+  "type": "connections",
+  "title": "Four Packs",
+  "date": "2026-06-10",
+  "week": 11,
+  "crosswordHint": "WORLDCUP",
+  "findItAnswer": "WARS",
+  "crosswordUrl": "https://rebel-the-dog.com/puzzles/crossword-06102026.html",
+  "findItUrl": "https://rebel-the-dog.com/puzzles/find-it-06102026.html",
+  "groups": [
+    { "tier": "yellow", "connection": "Countries of the United Kingdom",
+      "words": ["ENGLAND", "WALES", "SCOTLAND", "NORTHERN IRELAND"], "hintedBy": null },
+    { "tier": "green", "connection": "Where the US has fought multi-year wars since WWII",
+      "words": ["KOREA", "VIETNAM", "IRAQ", "AFGHANISTAN"], "hintedBy": "find-it" },
+    { "tier": "blue", "connection": "Last four World Cup champions",
+      "words": ["ARGENTINA", "FRANCE", "GERMANY", "SPAIN"], "hintedBy": "crossword" },
+    { "tier": "purple", "connection": "World Baseball Classic champions",
+      "words": ["VENEZUELA", "JAPAN", "UNITED STATES", "DOMINICAN REPUBLIC"], "hintedBy": null }
+  ]
+}

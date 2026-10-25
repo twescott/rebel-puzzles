@@ -1,0 +1,43 @@
+{
+  "title": "Matchmaking",
+  "subtitle": "",
+  "relation": "Accomplishment → First woman to achieve it",
+  "description": "Each clue is an accomplishment; the answer is the first woman to achieve it.",
+  "crosswordHint": "FEMALE LEADS",
+  "findItAnswer": "FIRST",
+  "matches": [
+    { "left": "President of Mexico", "right": "Claudia Sheinbaum" },
+    { "left": "Solo Transatlantic Flight", "right": "Amelia Earhart" },
+    { "left": "Nobel Prize Winner", "right": "Marie Curie" },
+    { "left": "Governor of Washington State", "right": "Dixy Lee Ray" },
+    { "left": "Swim from Cuba to Florida without a shark cage", "right": "Diana Nyad" },
+    { "left": "Go to Space", "right": "Valentina Tereshkova" },
+    { "left": "US Secretary of State", "right": "Madeleine Albright" },
+    { "left": "Publisher of the Washington Post", "right": "Katharine Graham" },
+    { "left": "Author of a novel that sold more than 100 million copies", "right": "Agatha Christie" },
+    { "left": "Vice President of the US", "right": "Kamala Harris" }
+  ],
+  "decoys": [
+    "Sally Ride",
+    "Mae Jemison",
+    "Hillary Clinton",
+    "Condoleezza Rice",
+    "Geraldine Ferraro",
+    "Christine Gregoire",
+    "Xóchitl Gálvez",
+    "Beryl Markham",
+    "Susie Maroney",
+    "Bertha von Suttner",
+    "J.K. Rowling",
+    "Cissy Patterson"
+  ],
+  "coverExample": {
+    "relation": "Owner → Pet",
+    "matches": [
+      { "left": "Jon Arbuckle", "right": "Odie" },
+      { "left": "Charlie Brown", "right": "Snoopy" },
+      { "left": "Hagrid", "right": "Fang" }
+    ],
+    "decoys": ["Otto", "Hobbes", "Old Yeller", "Scooby-Doo"]
+  }
+}

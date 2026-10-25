@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Four Packs</title>
+<style>
+  @page { size: letter; margin: 0.5in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; font-size: 11pt; color: #111; }
+  p { line-height: 1.45; }
+  .page { width: 100%; min-height: 10in; display: flex; flex-direction: column; }
+  .page-break { page-break-after: always; }
+  .page-content { flex: 1; }
+  .puzzle-header { text-align: center; border-bottom: 3px double #111; padding-bottom: 10px; margin-bottom: 16px; }
+  .brand { font-size: 9pt; text-transform: uppercase; letter-spacing: 2px; color: #555; margin-bottom: 4px; }
+  .puzzle-title { font-size: 24pt; font-weight: bold; letter-spacing: 1px; }
+  .byline { font-size: 9pt; color: #666; margin-top: 4px; }
+  .instructions { background: #f5f5f5; border: 1px solid #ccc; border-radius: 4px; padding: 8px 12px; font-size: 10pt; margin-bottom: 18px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
+  .cell { border: 2px solid #111; border-radius: 6px; height: 0.72in; display: flex; align-items: center; justify-content: center; text-align: center; font-weight: bold; font-size: 12pt; padding: 4px; }
+  .mini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin: 6px 0 10px; }
+  .mini-cell { border: 1.5px solid #111; border-radius: 4px; height: 0.42in; display: flex; align-items: center; justify-content: center; text-align: center; font-weight: bold; font-size: 8pt; padding: 2px; }
+  .band { border: 2px solid #111; border-radius: 6px; padding: 9px 13px; margin-bottom: 11px; }
+  .band-conn { font-size: 11.5pt; font-weight: bold; margin-bottom: 3px; }
+  .band-words { font-size: 10.5pt; }
+  .cue { font-size: 9pt; font-style: italic; font-weight: normal; }
+  .xref { margin-top: 18px; border-top: 1px solid #aaa; padding-top: 12px; font-size: 10pt; color: #333; }
+  .xref-h { font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .feedback { border-top: 1px solid #aaa; padding-top: 10px; margin-top: auto; font-size: 9.5pt; color: #333; }
+  .feedback-row { margin-bottom: 5px; }
+  .footer-note { margin-top: 8px; font-size: 9pt; font-style: italic; color: #555; }
+  .license { margin-top: 4px; font-size: 8pt; color: #777; }
+  .ex { border:1px solid #ccc; border-radius:4px; padding:10px 14px; font-size:9.5pt; }
+  .ex-band { border:1px solid #111; border-radius:4px; padding:4px 9px; margin-bottom:4px; font-size:9pt; }
+  .answers { margin-top: 14px; }
+  .ans-head { font-size: 9.5pt; color: #333; margin-bottom: 9px; }
+  .ans-group { margin-bottom: 9px; border-top: 1px dashed #bbb; padding-top: 7px; }
+  .ans-words { display: flex; align-items: flex-end; gap: 10px; }
+  .grp-num { font-weight: bold; font-size: 11pt; flex: 0 0 auto; }
+  .ans-conn { display: flex; align-items: flex-end; margin-top: 9px; padding-left: 0.3in; }
+  .ans-label { font-size: 9.5pt; font-style: italic; white-space: nowrap; margin-right: 8px; }
+  .line { flex: 1; border-bottom: 1.5px solid #111; height: 0.3in; }
+  .line-long { flex: 1; border-bottom: 1.5px solid #111; height: 0.26in; }
+  .feedback-title { font-weight: bold; font-size: 9.5pt; margin-bottom: 4px; }
+  .quote-box { margin-top: 14px; border: 1.5px solid #111; border-radius: 6px; padding: 8px 14px; text-align: center; }
+  .quote-title { font-weight: bold; font-size: 10pt; letter-spacing: 1.5px; margin-bottom: 4px; }
+  .quote-text { font-size: 13pt; line-height: 1.9; }
+  .quote-by { font-size: 9.5pt; font-style: italic; color: #444; margin-top: 2px; }
+  .q-blank { display: inline-block; width: 1.15in; border-bottom: 1.5px solid #111; height: 1em; vertical-align: baseline; }
+  .ak-title { font-size: 20pt; font-weight: bold; letter-spacing: 2px; }
+  .ak-subtitle { font-size: 11pt; color: #444; margin-top: 3px; }
+  .cell { height: 0.6in; } .instructions { margin-bottom: 12px; } .puzzle-header { padding-bottom: 6px; margin-bottom: 10px; }
+  .answers { margin-top: 10px; } .ans-head { margin-bottom: 6px; } .ans-group { margin-bottom: 6px; padding-top: 5px; } .ans-conn { margin-top: 6px; }
+</style></head><body>
+
+<!-- PAGE 1: COVER -->
+<div class="page page-break" style="padding:0;">
+  <div style="flex:1;">
+    <h1 style="text-align:center;font-size:26pt;font-weight:bold;margin-bottom:14px;">Rebel's Puzzles</h1>
+    <p style="margin-bottom:9px;">Rebel's Puzzles is a social experiment being conducted by Rebel's Dad on the patrons of Growlerz Trivia Night. He thinks this will be a fun addition to Caryn's awesome trivia questions. Like Rebel, Rebel's Dad responds well to feedback. Train him well.</p>
+    <p style="margin-bottom:6px;">Each Sunday, there will be a new puzzle on Rebel's Blog, followed by a new &ldquo;Find It!&rdquo; puzzle on Tuesday. These puzzles will provide hints to the weekly Growlerz Trivia Night puzzle.</p>
+    
+    <h2 style="font-size:14pt;font-weight:bold;margin-bottom:8px;">Tonight's Puzzle</h2>
+    <p style="margin-bottom:10px;">Tonight's puzzle is called &ldquo;Four Packs&rdquo;. Sort the 16 words into <strong>four groups of four</strong>, where each group shares a hidden connection. Some words look like they belong with more than one group &mdash; but there is exactly one correct arrangement. Write your four groups in the answer boxes, then score yourself: <strong>1 point</strong> for each group you complete (all four words correct) and <strong>1 point</strong> for each correct connection &mdash; for a maximum of <strong>8 points</strong>.</p>
+    <div class="ex">
+      <div style="font-weight:bold;margin-bottom:2px;">Example &mdash; sort these 16 words&hellip;</div>
+      <div class="mini-grid"><div class="mini-cell">DOGS</div><div class="mini-cell">RATS</div><div class="mini-cell">LIONS</div><div class="mini-cell">BEER</div><div class="mini-cell">MICE</div><div class="mini-cell">EAGLES</div><div class="mini-cell">CATS</div><div class="mini-cell">DAY CARE</div><div class="mini-cell">BEARS</div><div class="mini-cell">ROACHES</div><div class="mini-cell">HAMSTERS</div><div class="mini-cell">GROOMING</div><div class="mini-cell">DOLPHINS</div><div class="mini-cell">ANTS</div><div class="mini-cell">RABBITS</div><div class="mini-cell">TRIVIA</div></div>
+      <div style="font-weight:bold;margin-bottom:3px;">&hellip;into these four groups:</div>
+      <div class="ex-band" style="background:#f9df6d">Common pets: &nbsp;<b>DOGS &middot; CATS &middot; HAMSTERS &middot; RABBITS</b></div><div class="ex-band" style="background:#a0c35a">NFL teams: &nbsp;<b>LIONS &middot; EAGLES &middot; BEARS &middot; DOLPHINS</b></div><div class="ex-band" style="background:#b0c4ef">Pests: &nbsp;<b>RATS &middot; MICE &middot; ROACHES &middot; ANTS</b></div><div class="ex-band" style="background:#b482cf">Things you'll find at Growlerz: &nbsp;<b>DAY CARE &middot; BEER &middot; GROOMING &middot; TRIVIA</b></div>
+      <div style="font-style:italic;color:#555;margin-top:5px;">Almost every word is an animal &mdash; the trick is sorting them into pets, pests, and team names, which leaves the odd group out.</div>
+    </div>
+  </div>
+  <div class="feedback">
+    <div class="footer-note">Like the puzzle? Buy Rebel a Pup Cup, or her dad a drink. Find a mistake? Rebel&rsquo;s Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+    <div class="license">&copy; Tim Wescott &nbsp;|&nbsp; Licensed under CC BY-SA 4.0</div>
+  </div>
+</div>
+
+<!-- PAGE 2: PUZZLE -->
+<div class="page page-break">
+  <div class="page-content">
+    <div class="puzzle-header"><div class="brand">Rebel's Puzzles</div><div class="puzzle-title">Four Packs</div><div class="byline">By Rebel's Dad</div></div>
+    <div class="instructions"><strong>Create four groups of four!</strong> Sort all 16 words into four groups that each share a hidden connection, then write each group and its connection in the boxes below. Watch out &mdash; some words fit more than one group, but only one arrangement is correct. <strong>1 point per completed group + 1 per correct connection</strong> (8 max).</div>
+    <div class="grid"><div class="cell">SUGAR</div>
+<div class="cell">PECAN</div>
+<div class="cell">CAKE</div>
+<div class="cell">BAKING SODA</div>
+<div class="cell">TART</div>
+<div class="cell">DOUGHNUT</div>
+<div class="cell">PUMPKIN</div>
+<div class="cell">CHERRY</div>
+<div class="cell">SALSA</div>
+<div class="cell">BUTTER</div>
+<div class="cell">AVOCADO</div>
+<div class="cell">CRUMBLE</div>
+<div class="cell">CHICKEN</div>
+<div class="cell">CHEESE</div>
+<div class="cell">SALT</div>
+<div class="cell">APPLE</div></div>
+    <div class="answers">
+      <div class="ans-head">Write your four groups &mdash; the four words and the connection for each. <strong>Score: 1 point per completed group + 1 per correct connection (8 possible).</strong></div>
+      
+    <div class="ans-group">
+      <div class="ans-words"><span class="grp-num">1.</span><span class="line"></span><span class="line"></span><span class="line"></span><span class="line"></span></div>
+      <div class="ans-conn"><span class="ans-label">Connection:</span><span class="line line-long"></span></div>
+    </div>
+    <div class="ans-group">
+      <div class="ans-words"><span class="grp-num">2.</span><span class="line"></span><span class="line"></span><span class="line"></span><span class="line"></span></div>
+      <div class="ans-conn"><span class="ans-label">Connection:</span><span class="line line-long"></span></div>
+    </div>
+    <div class="ans-group">
+      <div class="ans-words"><span class="grp-num">3.</span><span class="line"></span><span class="line"></span><span class="line"></span><span class="line"></span></div>
+      <div class="ans-conn"><span class="ans-label">Connection:</span><span class="line line-long"></span></div>
+    </div>
+    <div class="ans-group">
+      <div class="ans-words"><span class="grp-num">4.</span><span class="line"></span><span class="line"></span><span class="line"></span><span class="line"></span></div>
+      <div class="ans-conn"><span class="ans-label">Connection:</span><span class="line line-long"></span></div>
+    </div>
+      
+    </div>
+  </div>
+  <div class="feedback">
+    <div class="feedback-title">FEEDBACK</div>
+    <div class="feedback-row">Did you like this puzzle? &nbsp; &#9744; Yes &nbsp; &#9744; No &nbsp; &nbsp; How was the difficulty? &nbsp; &#9744; Too Easy &nbsp; &#9744; Just Right &nbsp; &#9744; Too Hard</div>
+    <div class="feedback-row">Did you like the Crossword? &nbsp; &#9744; Yes &nbsp; &#9744; No &nbsp; &nbsp; Did you like the Find It!? &nbsp; &#9744; Yes &nbsp; &#9744; No</div>
+    <div class="footer-note">Like the puzzle? Buy Rebel a Pup Cup, or her dad a drink. Find a mistake? Rebel&rsquo;s Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+    <div class="license">&copy; Tim Wescott &nbsp;|&nbsp; Licensed under CC BY-SA 4.0</div></div>
+</div>
+
+<!-- PAGE 3: ANSWER KEY -->
+<div class="page">
+  <div class="puzzle-header"><div class="brand">Rebel's Puzzles</div><div class="ak-title">ANSWER KEY</div><div class="ak-subtitle">Four Packs &mdash; Answer Key</div></div>
+  <div class="band" style="background:#f9df6d">
+      <div class="band-conn">CAKE INGREDIENTS </div>
+      <div class="band-words">BUTTER &nbsp;·&nbsp; SUGAR &nbsp;·&nbsp; BAKING SODA &nbsp;·&nbsp; SALT</div></div>
+<div class="band" style="background:#a0c35a">
+      <div class="band-conn">____ PIE </div>
+      <div class="band-words">CHERRY &nbsp;·&nbsp; APPLE &nbsp;·&nbsp; PECAN &nbsp;·&nbsp; PUMPKIN</div></div>
+<div class="band" style="background:#b0c4ef">
+      <div class="band-conn">BAKED GOODS </div>
+      <div class="band-words">CAKE &nbsp;·&nbsp; TART &nbsp;·&nbsp; DOUGHNUT &nbsp;·&nbsp; CRUMBLE</div></div>
+<div class="band" style="background:#b482cf">
+      <div class="band-conn">INGREDIENTS IN A TACO </div>
+      <div class="band-words">CHICKEN &nbsp;·&nbsp; CHEESE &nbsp;·&nbsp; SALSA &nbsp;·&nbsp; AVOCADO</div></div>
+  
+  <div style="font-size:9.5pt;color:#444;margin-top:8px;"><strong>Scoring:</strong> 1 point for each completed group (all four words) and 1 for each correct connection &mdash; <strong>8 points</strong> possible.</div>
+  <div class="xref"><div class="xref-h">Hints from this week's puzzles:</div>
+    <div>Crossword theme: <strong>CAKE MIX</strong></div>
+    <div>Find It! answer: <strong>SWEET</strong></div></div>
+  <div class="license" style="margin-top:24px;">&copy; Tim Wescott &nbsp;|&nbsp; Licensed under CC BY-SA 4.0</div>
+</div>
+
+</body></html>

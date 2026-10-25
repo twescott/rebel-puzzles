@@ -1,0 +1,21 @@
+{
+  "theme": "PERIODICTABLE",
+  "title": "ELEMENTS",
+  "crosswordHint": "ELEMENT",
+  "findItAnswer": "ATOMS",
+  "entries": [
+    { "word": "KRYPTON" },
+    { "word": "NEON" },
+    { "word": "BORON" },
+    { "word": "SODIUM" },
+    { "word": "IRON" },
+    { "word": "RADIUM" },
+    { "word": "HELIUM" },
+    { "word": "MERCURY" },
+    { "word": "PLATINUM" },
+    { "word": "COBALT" },
+    { "word": "CARBON" },
+    { "word": "SILVER" },
+    { "word": "ARSENIC" }
+  ]
+}

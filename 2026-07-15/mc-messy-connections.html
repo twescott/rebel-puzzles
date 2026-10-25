@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Connectagram</title>
+  <style>
+    @page { size: letter; margin: 0.5in; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      font-size: 11pt;
+      color: #111;
+      background: #fff;
+    }
+
+    p { line-height: 1.5; }
+
+    /* ── page layout ── */
+    .page {
+      width: 100%;
+      height: 10in;
+      display: flex;
+      flex-direction: column;
+    }
+    .page-break { page-break-after: always; }
+    .page-content { flex: 1; }
+
+    /* ── header ── */
+    .puzzle-header {
+      text-align: center;
+      border-bottom: 3px double #111;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+    .brand { font-size: 9pt; text-transform: uppercase; letter-spacing: 2px; color: #555; margin-bottom: 4px; }
+    .puzzle-title { font-size: 22pt; font-weight: bold; letter-spacing: 1px; }
+    .puzzle-theme { font-size: 11pt; color: #444; margin-top: 3px; font-style: italic; }
+    .byline { font-size: 9pt; color: #666; margin-top: 4px; }
+
+    /* ── instructions ── */
+    .instructions {
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 10pt;
+      margin-bottom: 18px;
+    }
+
+    /* ── entries ── */
+    .entries { margin-bottom: 10px; }
+
+    .entry {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 9px;
+    }
+
+    .entry-number {
+      font-weight: bold;
+      font-size: 11pt;
+      min-width: 20px;
+      padding-top: 2px;
+    }
+
+    .entry-body { flex: 1; }
+
+    .entry-clue {
+      font-size: 10.5pt;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .entry-points {
+      font-size: 9pt;
+      color: #555;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    .entry-blanks {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      flex-wrap: wrap;
+    }
+
+    .answer-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      font-size: 13pt;
+    }
+
+    .answer-box.blank {
+      border-bottom: 2px solid #111;
+    }
+
+    .answer-box.circled {
+      border: 2px solid #111;
+      border-radius: 50%;
+    }
+
+    .answer-hyphen {
+      font-size: 13pt;
+      font-weight: bold;
+      padding: 0 2px;
+      line-height: 22px;
+    }
+    .answer-space {
+      display: inline-block;
+      width: 18px;
+    }
+
+    /* ── final answer section ── */
+    .connection-section {
+      margin-top: 6px;
+      margin-bottom: 10px;
+      border-top: 2px solid #111;
+      padding-top: 8px;
+    }
+
+    .connection-label {
+      font-size: 10pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .final-answer-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .final-word {
+      display: inline-flex;
+      gap: 3px;
+    }
+
+    .final-space { display: inline-block; width: 14px; }
+
+    /* ── feedback / footer ── */
+    .feedback {
+      border-top: 1px solid #aaa;
+      padding-top: 6px;
+      margin-top: auto;
+      font-size: 9pt;
+      color: #333;
+    }
+    .feedback-row { margin-bottom: 3px; }
+    .footer-note { margin-top: 4px; font-size: 8.5pt; font-style: italic; color: #555; }
+    .license { margin-top: 3px; font-size: 8pt; color: #777; }
+
+    /* ── answer key ── */
+    .answer-box.filled {
+      font-size: 11pt;
+      font-weight: bold;
+      line-height: 22px;
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- PAGE 1: COVER -->
+<div class="page page-break" style="padding:0;">
+  <div style="flex:1;">
+    <h1 style="text-align:center;font-size:26pt;font-weight:bold;margin-bottom:16px;">Rebel's Puzzles</h1>
+
+    <p style="margin-bottom:10px;">Rebel's Puzzles is a social experiment being conducted by Rebel's Dad on the patrons of Growlerz Trivia Night. He thinks this will be a fun addition to Caryn's awesome trivia questions. Like Rebel, Rebel's Dad responds well to feedback. Train him well.</p>
+
+    <p style="margin-bottom:20px;">Each Sunday, there will be a new puzzle on Rebel's Blog, followed by a new &ldquo;Find It!&rdquo; puzzle on Tuesday. These puzzles will provide hints to the weekly Growlerz Trivia Night puzzle.</p>
+
+    
+
+    <h2 style="font-size:14pt;font-weight:bold;margin-bottom:10px;">Tonight's Puzzle</h2>
+
+    <p style="margin-bottom:14px;">Tonight's puzzle is called &ldquo;Connectagram&rdquo;. Fill in each answer using the clue. Some letters are circled &mdash; collect all the circled letters from every answer and unscramble them to reveal what all the answers have in common.</p>
+
+    <p style="margin-bottom:10px;">You get <strong>1 point</strong> for each correct answer, and <strong>5 points</strong> for finding the final answer.</p>
+
+    <p style="font-weight:bold;margin-bottom:8px;">Example:</p>
+
+    <div style="border:1px solid #ccc;border-radius:4px;padding:12px 16px;font-size:10pt;">
+      <div style="text-align:center;font-size:12pt;font-weight:bold;margin-bottom:2px;">Connectagram</div>
+      <div style="text-align:center;font-style:italic;font-size:9pt;color:#555;margin-bottom:12px;">Fill in each answer. Unscramble the circled letters to find the final answer.</div>
+      
+    <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;">
+      <div style="font-weight:bold;min-width:16px;">1.</div>
+      <div>
+        <div style="font-size:9.5pt;margin-bottom:4px;">Like old milk <span style="font-size:8.5pt;color:#555;font-style:italic;">(1 point)</span></div>
+        <div style="display:flex;align-items:center;gap:2px;"><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">S</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">P</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">O</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">I</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">L</span><span class="answer-box circled filled" style="font-size:9pt;width:18px;height:18px;">E</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">D</span></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;">
+      <div style="font-weight:bold;min-width:16px;">2.</div>
+      <div>
+        <div style="font-size:9.5pt;margin-bottom:4px;">Landmark Civil Rights case _____ vs Virginia <span style="font-size:8.5pt;color:#555;font-style:italic;">(1 point)</span></div>
+        <div style="display:flex;align-items:center;gap:2px;"><span class="answer-box circled filled" style="font-size:9pt;width:18px;height:18px;">L</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">O</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">V</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">I</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">N</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">G</span></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;">
+      <div style="font-weight:bold;min-width:16px;">3.</div>
+      <div>
+        <div style="font-size:9.5pt;margin-bottom:4px;">Classic board game <span style="font-size:8.5pt;color:#555;font-style:italic;">(1 point)</span></div>
+        <div style="display:flex;align-items:center;gap:2px;"><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">T</span><span class="answer-box circled filled" style="font-size:9pt;width:18px;height:18px;">R</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">O</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">U</span><span class="answer-box circled filled" style="font-size:9pt;width:18px;height:18px;">B</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">L</span><span class="answer-box circled filled" style="font-size:9pt;width:18px;height:18px;">E</span></div>
+      </div>
+    </div>
+      <div style="border-top:1px solid #aaa;margin-top:10px;padding-top:10px;">
+        <div style="font-weight:bold;font-size:9pt;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">
+          Final Answer <span style="font-weight:normal;font-style:italic;text-transform:none;letter-spacing:0;">(5 points)</span>:
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;">
+          <span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;font-weight:bold;">R</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;font-weight:bold;">E</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;font-weight:bold;">B</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;font-weight:bold;">E</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;font-weight:bold;">L</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feedback">
+    <div class="footer-note">Like the puzzle? Buy Rebel's Dad/Rebel a drink/Pup Cup. Find a mistake? Rebel's Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+    <div class="license">Licensed under CC BY-SA 4.0</div>
+  </div>
+</div>
+
+<!-- PAGE 2: PUZZLE -->
+<div class="page page-break">
+  <div class="page-content">
+    <div class="puzzle-header">
+      <div class="brand">Rebel's Puzzles</div>
+      <div class="puzzle-title">Connectagram</div>
+      <div class="byline">By Rebel's Dad</div>
+    </div>
+
+    <div style="text-align:center; font-size:10.5pt; color:#333; margin:6px 0 10px; font-style:italic;">Today is National Hot Dog Day! Enjoy this hot-dog-themed puzzle. The final answer will give it some local flavor.</div>
+
+    <div class="entries">
+      
+  <div class="entry">
+    <div class="entry-number">1.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Type of food that includes hot dogs and bratwursts <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">2.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Like the composition of many kosher hot dogs <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-hyphen">-</span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">3.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Common hot dog condiment that was once characterized as a vegetable by the Reagan administration <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">4.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Company with specially designed vehicles that look like hot dogs <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-space"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">5.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Former congressman Anthony whose last name sounds like a hot dog, and also what got him into trouble <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">6.</div>
+    <div class="entry-body">
+      <div class="entry-clue">A 2025 Marist poll found that 62% of Americans (wrongly) think a hot dog is NOT a type of this <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">7.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Internet company with a name that is similar to &quot;Hot Dog!&quot; <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">8.</div>
+    <div class="entry-body">
+      <div class="entry-clue">&quot;Rocky Horror Picture Show&quot; character with a hot-dog-adjacent name <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-hyphen">-</span><span class="answer-box blank"></span><span class="answer-hyphen">-</span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">9.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Company that sponsors an annual hot-dog-eating contest <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">10.</div>
+    <div class="entry-body">
+      <div class="entry-clue">New York neighborhood after which a type of hot dog is named <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-space"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">11.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Blind Marvel hero whose name is a synonym for &quot;hot dog&quot; <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+    </div>
+
+    <div class="connection-section">
+      <div class="connection-label">Final Answer <span class="entry-points">(5 points)</span>:</div>
+      <div class="final-answer-row">
+        <span class="final-word"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></span><span class="final-space">&nbsp;</span><span class="final-word"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="feedback">
+    <div class="feedback-row">Like it? &#9744; Yes &#9744; No &nbsp;&nbsp;&#8226;&nbsp;&nbsp; Difficulty? &#9744; Too Easy &#9744; Just Right &#9744; Too Hard</div>
+    <div class="footer-note">Like the puzzle? Buy Rebel's Dad/Rebel a drink/Pup Cup. Find a mistake? Rebel's Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+    <div class="license">This puzzle is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. &copy; 2026 Rebel's Blog</div>
+  </div>
+</div>
+
+<!-- PAGE 3: ANSWER KEY -->
+<div class="page">
+  <div class="puzzle-header">
+    <div class="brand">Answer Key</div>
+    <div class="puzzle-title">Connectagram</div>
+  </div>
+
+  <div class="entries">
+    
+  <div class="entry">
+    <div class="entry-number">1.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Type of food that includes hot dogs and bratwursts <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">S</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">U</span><span class="answer-box circled filled">S</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">G</span><span class="answer-box blank filled">E</span><span class="answer-box blank filled">S</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">2.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Like the composition of many kosher hot dogs <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">A</span><span class="answer-box blank filled">L</span><span class="answer-box blank filled">L</span><span class="answer-hyphen">-</span><span class="answer-box blank filled">B</span><span class="answer-box circled filled">E</span><span class="answer-box blank filled">E</span><span class="answer-box blank filled">F</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">3.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Common hot dog condiment that was once characterized as a vegetable by the Reagan administration <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">K</span><span class="answer-box blank filled">E</span><span class="answer-box blank filled">T</span><span class="answer-box circled filled">C</span><span class="answer-box blank filled">H</span><span class="answer-box blank filled">U</span><span class="answer-box blank filled">P</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">4.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Company with specially designed vehicles that look like hot dogs <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">O</span><span class="answer-box blank filled">S</span><span class="answer-box blank filled">C</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">R</span><span class="answer-space"></span><span class="answer-box circled filled">M</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">Y</span><span class="answer-box blank filled">E</span><span class="answer-box blank filled">R</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">5.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Former congressman Anthony whose last name sounds like a hot dog, and also what got him into trouble <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">W</span><span class="answer-box blank filled">E</span><span class="answer-box blank filled">I</span><span class="answer-box blank filled">N</span><span class="answer-box circled filled">E</span><span class="answer-box blank filled">R</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">6.</div>
+    <div class="entry-body">
+      <div class="entry-clue">A 2025 Marist poll found that 62% of Americans (wrongly) think a hot dog is NOT a type of this <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">S</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">N</span><span class="answer-box blank filled">D</span><span class="answer-box blank filled">W</span><span class="answer-box blank filled">I</span><span class="answer-box circled filled">C</span><span class="answer-box blank filled">H</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">7.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Internet company with a name that is similar to &quot;Hot Dog!&quot; <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">Y</span><span class="answer-box blank filled">A</span><span class="answer-box circled filled">H</span><span class="answer-box blank filled">O</span><span class="answer-box blank filled">O</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">8.</div>
+    <div class="entry-body">
+      <div class="entry-clue">&quot;Rocky Horror Picture Show&quot; character with a hot-dog-adjacent name <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">F</span><span class="answer-box blank filled">R</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">N</span><span class="answer-box blank filled">K</span><span class="answer-hyphen">-</span><span class="answer-box blank filled">N</span><span class="answer-hyphen">-</span><span class="answer-box blank filled">F</span><span class="answer-box blank filled">U</span><span class="answer-box circled filled">R</span><span class="answer-box blank filled">T</span><span class="answer-box blank filled">E</span><span class="answer-box blank filled">R</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">9.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Company that sponsors an annual hot-dog-eating contest <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">N</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">T</span><span class="answer-box blank filled">H</span><span class="answer-box circled filled">A</span><span class="answer-box blank filled">N</span><span class="answer-box blank filled">S</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">10.</div>
+    <div class="entry-body">
+      <div class="entry-clue">New York neighborhood after which a type of hot dog is named <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">C</span><span class="answer-box blank filled">O</span><span class="answer-box blank filled">N</span><span class="answer-box circled filled">E</span><span class="answer-box blank filled">Y</span><span class="answer-space"></span><span class="answer-box blank filled">I</span><span class="answer-box blank filled">S</span><span class="answer-box blank filled">L</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">N</span><span class="answer-box blank filled">D</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">11.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Blind Marvel hero whose name is a synonym for &quot;hot dog&quot; <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">D</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">R</span><span class="answer-box circled filled">E</span><span class="answer-box blank filled">D</span><span class="answer-box blank filled">E</span><span class="answer-box blank filled">V</span><span class="answer-box blank filled">I</span><span class="answer-box blank filled">L</span></div>
+    </div>
+  </div>
+  </div>
+
+  <div class="connection-section">
+    <div class="connection-label">&#9733; Final Answer <span class="entry-points">(5 points)</span>:</div>
+    <div class="final-answer-row" style="font-size:13pt; font-weight:bold; letter-spacing:2px;">
+      CREAM CHEESE
+    </div>
+  </div>
+
+  
+  <div style="margin-top:20px; border-top:1px solid #aaa; padding-top:12px; font-size:10pt; color:#333;">
+    <div style="font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Hints from this week's puzzles:</div>
+    <div>Crossword theme: <strong>HOTDOG</strong></div>
+    <div>Find It! answer: <strong>GRILL</strong></div>
+  </div>
+
+  <div class="license" style="margin-top:24px;">This puzzle is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. &copy; 2026 Rebel's Blog</div>
+</div>
+
+</body>
+</html>

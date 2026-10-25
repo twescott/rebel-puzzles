@@ -1,0 +1,86 @@
+{
+  "crosswordSolution": "TAX DAY",
+  "findItSolution": "FATED",
+  "hiddenQuote": "IN THIS WORLD NOTHING CAN BE SAID TO BE CERTAIN, EXCEPT DEATH AND TAXES",
+  "author": "Benjamin Franklin",
+  "entries": [
+    {
+      "quoteWord": "IN",
+      "given": true
+    },
+    {
+      "quoteWord": "THIS",
+      "given": true
+    },
+    {
+      "quoteWord": "WORLD",
+      "given": false,
+      "word1": "TIMES",
+      "word2": "STRANGER",
+      "word3": "EMERALD",
+      "connection": "Seattle newspapers"
+    },
+    {
+      "quoteWord": "NOTHING",
+      "given": false,
+      "word1": "TRIFLE",
+      "word2": "SMIDGEN",
+      "word3": "SLIVER",
+      "connection": "Small but positive amounts"
+    },
+    {
+      "quoteWord": "CAN",
+      "given": true
+    },
+    {
+      "quoteWord": "BE",
+      "given": true
+    },
+    {
+      "quoteWord": "SAID",
+      "given": true
+    },
+    {
+      "quoteWord": "TO",
+      "given": true
+    },
+    {
+      "quoteWord": "BE",
+      "given": true
+    },
+    {
+      "quoteWord": "CERTAIN",
+      "given": false,
+      "word1": "QUESTIONABLE",
+      "word2": "DOUBTFUL",
+      "word3": "OUT",
+      "connection": "NFL injury designations"
+    },
+    {
+      "quoteWord": "EXCEPT",
+      "given": true
+    },
+    {
+      "quoteWord": "DEATH",
+      "given": false,
+      "word1": "ALIBI",
+      "word2": "CORPSE",
+      "word3": "SILENCE",
+      "connection": "Words in Sue Grafton titles"
+    },
+    {
+      "quoteWord": "AND",
+      "given": true
+    },
+    {
+      "quoteWord": "TAXES",
+      "given": false,
+      "word1": "EARNINGS",
+      "word2": "REVENUE",
+      "word3": "WINNINGS",
+      "connection": "Income"
+    }
+  ],
+  "crosswordUrl": "https://rebel-the-dog.com/puzzles/crossword-04152026.html",
+  "findItUrl": "https://rebel-the-dog.com/puzzles/find-it-04152026.html"
+}

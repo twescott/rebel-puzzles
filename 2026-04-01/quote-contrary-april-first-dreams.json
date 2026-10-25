@@ -1,0 +1,56 @@
+{
+  "crosswordSolution": "April First",
+  "findItSolution": "DREAM",
+  "crosswordUrl": "https://rebel-the-dog.com/puzzles/crossword-001.html",
+  "findItUrl": "https://rebel-the-dog.com/puzzles/find-it-001.html",
+  "hiddenQuote": "Lord, what fools these mortals be!",
+  "author": "William Shakespeare",
+  "speaker": "Puck",
+  "work": "A Midsummer Night's Dream",
+  "entries": [
+    {
+      "quoteWord": "LORD",
+      "given": false,
+      "word1": "QUEEN",
+      "word2": "BISHOP",
+      "word3": "KNIGHT",
+      "connection": "Chess pieces"
+    },
+    {
+      "quoteWord": "WHAT",
+      "given": false,
+      "word1": "CHAT",
+      "word2": "PHAT",
+      "word3": "THAT",
+      "connection": "Rhymes with BRAT"
+    },
+    {
+      "quoteWord": "FOOLS",
+      "given": false,
+      "word1": "JOKERS",
+      "word2": "WILDCARDS",
+      "word3": "X-FACTORS",
+      "connection": "Unknown elements"
+    },
+    {
+      "quoteWord": "THESE",
+      "given": true
+    },
+    {
+      "quoteWord": "MORTALS",
+      "given": false,
+      "word1": "GODS",
+      "word2": "NYMPHS",
+      "word3": "TITANS",
+      "connection": "Immortal beings of myth"
+    },
+    {
+      "quoteWord": "BE",
+      "given": false,
+      "word1": "OAR",
+      "word2": "KNOT",
+      "word3": "TWO",
+      "connection": "Homophones of words in Hamlet's question"
+    }
+  ]
+}

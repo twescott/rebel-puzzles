@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Connectagram</title>
+  <style>
+    @page { size: letter; margin: 0.5in; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      font-size: 11pt;
+      color: #111;
+      background: #fff;
+    }
+
+    p { line-height: 1.5; }
+
+    /* ── page layout ── */
+    .page {
+      width: 100%;
+      height: 10in;
+      display: flex;
+      flex-direction: column;
+    }
+    .page-break { page-break-after: always; }
+    .page-content { flex: 1; }
+
+    /* ── header ── */
+    .puzzle-header {
+      text-align: center;
+      border-bottom: 3px double #111;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+    .brand { font-size: 9pt; text-transform: uppercase; letter-spacing: 2px; color: #555; margin-bottom: 4px; }
+    .puzzle-title { font-size: 22pt; font-weight: bold; letter-spacing: 1px; }
+    .puzzle-theme { font-size: 11pt; color: #444; margin-top: 3px; font-style: italic; }
+    .byline { font-size: 9pt; color: #666; margin-top: 4px; }
+
+    /* ── instructions ── */
+    .instructions {
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 10pt;
+      margin-bottom: 18px;
+    }
+
+    /* ── entries ── */
+    .entries { margin-bottom: 20px; }
+
+    .entry {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .entry-number {
+      font-weight: bold;
+      font-size: 11pt;
+      min-width: 20px;
+      padding-top: 2px;
+    }
+
+    .entry-body { flex: 1; }
+
+    .entry-clue {
+      font-size: 10.5pt;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .entry-points {
+      font-size: 9pt;
+      color: #555;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    .entry-blanks {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      flex-wrap: wrap;
+    }
+
+    .answer-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      font-size: 13pt;
+    }
+
+    .answer-box.blank {
+      border-bottom: 2px solid #111;
+    }
+
+    .answer-box.circled {
+      border: 2px solid #111;
+      border-radius: 50%;
+    }
+
+    .answer-hyphen {
+      font-size: 13pt;
+      font-weight: bold;
+      padding: 0 2px;
+      line-height: 22px;
+    }
+    .answer-space {
+      display: inline-block;
+      width: 18px;
+    }
+
+    /* ── final answer section ── */
+    .connection-section {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border-top: 2px solid #111;
+      padding-top: 12px;
+    }
+
+    .connection-label {
+      font-size: 10pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .final-answer-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .final-word {
+      display: inline-flex;
+      gap: 3px;
+    }
+
+    .final-space { display: inline-block; width: 14px; }
+
+    /* ── feedback / footer ── */
+    .feedback {
+      border-top: 1px solid #aaa;
+      padding-top: 10px;
+      margin-top: auto;
+      font-size: 9.5pt;
+      color: #333;
+    }
+    .feedback-row { margin-bottom: 5px; }
+    .footer-note { margin-top: 8px; font-size: 9pt; font-style: italic; color: #555; }
+    .license { margin-top: 4px; font-size: 8pt; color: #777; }
+
+    /* ── answer key ── */
+    .answer-box.filled {
+      font-size: 11pt;
+      font-weight: bold;
+      line-height: 22px;
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- PAGE 1: COVER -->
+<div class="page page-break" style="padding:0;">
+  <div style="flex:1;">
+    <h1 style="text-align:center;font-size:26pt;font-weight:bold;margin-bottom:16px;">Rebel's Puzzles</h1>
+
+    <p style="margin-bottom:10px;">Rebel's Puzzles is a social experiment being conducted by Rebel's Dad on the patrons of Growlerz Trivia Night. He thinks this will be a fun addition to Caryn's awesome trivia questions. Like Rebel, Rebel's Dad responds well to feedback. Train him well.</p>
+
+    <p style="margin-bottom:20px;">Each Sunday, there will be a new puzzle on Rebel's Blog, followed by a new &ldquo;Find It!&rdquo; puzzle on Tuesday. These puzzles will provide hints to the weekly Growlerz Trivia Night puzzle.</p>
+
+    
+  <div style="display:flex; justify-content:center; gap:60px; margin:24px 0;">
+    
+    <div style="text-align:center;">
+      <div style="font-style:italic; font-size:10pt; color:#555; margin-bottom:8px;">This week's crossword</div>
+      <img src="data:image/png;base64,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" style="width:160px;height:160px;" alt="Crossword QR">
+      <div style="font-size:8pt;color:#666;margin-top:6px;">https://rebel-the-dog.com/puzzles/crossword-05132026.html</div>
+    </div>
+    
+    <div style="text-align:center;">
+      <div style="font-style:italic; font-size:10pt; color:#555; margin-bottom:8px;">This week's Find It!</div>
+      <img src="data:image/png;base64,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" style="width:160px;height:160px;" alt="Find It QR">
+      <div style="font-size:8pt;color:#666;margin-top:6px;">https://rebel-the-dog.com/puzzles/find-it-05132026.html</div>
+    </div>
+  </div>
+
+    <h2 style="font-size:14pt;font-weight:bold;margin-bottom:10px;">Tonight's Puzzle</h2>
+
+    <p style="margin-bottom:14px;">Tonight's puzzle is called &ldquo;Connectagram&rdquo;. Fill in each answer using the clue. Some letters are circled &mdash; collect all the circled letters from every answer and unscramble them to reveal what all the answers have in common.</p>
+
+    <p style="margin-bottom:10px;">You get <strong>1 point</strong> for each correct answer, and <strong>5 points</strong> for finding the connection.</p>
+
+    <p style="font-weight:bold;margin-bottom:8px;">Example:</p>
+
+    <div style="border:1px solid #ccc;border-radius:4px;padding:12px 16px;font-size:10pt;">
+      <div style="text-align:center;font-size:12pt;font-weight:bold;margin-bottom:2px;">Connectagram</div>
+      <div style="text-align:center;font-style:italic;font-size:9pt;color:#555;margin-bottom:12px;">Fill in each answer. Unscramble the circled letters to find the connection.</div>
+      
+    <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;">
+      <div style="font-weight:bold;min-width:16px;">1.</div>
+      <div>
+        <div style="font-size:9.5pt;margin-bottom:4px;">Like old milk <span style="font-size:8.5pt;color:#555;font-style:italic;">(1 point)</span></div>
+        <div style="display:flex;align-items:center;gap:2px;"><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">S</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">P</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">O</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">I</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">L</span><span class="answer-box circled filled" style="font-size:9pt;width:18px;height:18px;">E</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">D</span></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;">
+      <div style="font-weight:bold;min-width:16px;">2.</div>
+      <div>
+        <div style="font-size:9.5pt;margin-bottom:4px;">Landmark Civil Rights case _____ vs Virginia <span style="font-size:8.5pt;color:#555;font-style:italic;">(1 point)</span></div>
+        <div style="display:flex;align-items:center;gap:2px;"><span class="answer-box circled filled" style="font-size:9pt;width:18px;height:18px;">L</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">O</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">V</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">I</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">N</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">G</span></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;">
+      <div style="font-weight:bold;min-width:16px;">3.</div>
+      <div>
+        <div style="font-size:9.5pt;margin-bottom:4px;">Classic board game <span style="font-size:8.5pt;color:#555;font-style:italic;">(1 point)</span></div>
+        <div style="display:flex;align-items:center;gap:2px;"><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">T</span><span class="answer-box circled filled" style="font-size:9pt;width:18px;height:18px;">R</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">O</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">U</span><span class="answer-box circled filled" style="font-size:9pt;width:18px;height:18px;">B</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;">L</span><span class="answer-box circled filled" style="font-size:9pt;width:18px;height:18px;">E</span></div>
+      </div>
+    </div>
+      <div style="border-top:1px solid #aaa;margin-top:10px;padding-top:10px;">
+        <div style="font-weight:bold;font-size:9pt;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">
+          The Connection <span style="font-weight:normal;font-style:italic;text-transform:none;letter-spacing:0;">(5 points)</span>:
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;">
+          <span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;font-weight:bold;">R</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;font-weight:bold;">E</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;font-weight:bold;">B</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;font-weight:bold;">E</span><span class="answer-box blank filled" style="font-size:9pt;width:18px;height:18px;font-weight:bold;">L</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feedback">
+    <div class="footer-note">Like the puzzle? Buy Rebel's Dad/Rebel a drink/Pup Cup. Find a mistake? Rebel's Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+    <div class="license">Licensed under CC BY-SA 4.0</div>
+  </div>
+</div>
+
+<!-- PAGE 2: PUZZLE -->
+<div class="page page-break">
+  <div class="page-content">
+    <div class="puzzle-header">
+      <div class="brand">Rebel's Puzzles</div>
+      <div class="puzzle-title">Connectagram</div>
+      <div class="byline">By Rebel's Dad</div>
+    </div>
+
+    <div class="instructions">
+      Fill in each answer. Then unscramble the <strong>circled letters</strong> across all answers to reveal what they all have in common.
+    </div>
+
+    <div class="entries">
+      
+  <div class="entry">
+    <div class="entry-number">1.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of Growlerz <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-space"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">2.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of a Tlingit totem pole <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-space"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">3.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of Kubota Gardens <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-space"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">4.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of Edgar Martinez Drive <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">5.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of Lambert House <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-space"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">6.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of El Centro de la Raza <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-space"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">7.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of Woodland Park Zoo <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-space"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">8.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of a replica of the Statue of Liberty <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-space"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">9.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of a famous troll <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">10.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of The Crocodile <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box circled"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></div>
+    </div>
+  </div>
+    </div>
+
+    <div class="connection-section">
+      <div class="connection-label">The Connection <span class="entry-points">(5 points)</span>:</div>
+      <div class="final-answer-row">
+        <span class="final-word"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></span><span class="final-space">&nbsp;</span><span class="final-word"><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span><span class="answer-box blank"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="feedback">
+    <div class="feedback-row">Did you like this puzzle? &nbsp; &#9744; Yes &nbsp; &#9744; No</div>
+    <div class="feedback-row">How was the difficulty? &nbsp; &#9744; Too Easy &nbsp; &#9744; Just Right &nbsp; &#9744; Too Hard</div>
+    <div class="footer-note">Like the puzzle? Buy Rebel's Dad/Rebel a drink/Pup Cup. Find a mistake? Rebel's Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+    <div class="license">This puzzle is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. &copy; 2026 Rebel's Blog</div>
+  </div>
+</div>
+
+<!-- PAGE 3: ANSWER KEY -->
+<div class="page">
+  <div class="puzzle-header">
+    <div class="brand">Answer Key</div>
+    <div class="puzzle-title">Connectagram</div>
+  </div>
+
+  <div class="entries">
+    
+  <div class="entry">
+    <div class="entry-number">1.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of Growlerz <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">C</span><span class="answer-box circled filled">O</span><span class="answer-box blank filled">L</span><span class="answer-box blank filled">U</span><span class="answer-box blank filled">M</span><span class="answer-box blank filled">B</span><span class="answer-box blank filled">I</span><span class="answer-box blank filled">A</span><span class="answer-space"></span><span class="answer-box blank filled">C</span><span class="answer-box circled filled">I</span><span class="answer-box blank filled">T</span><span class="answer-box blank filled">Y</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">2.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of a Tlingit totem pole <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">P</span><span class="answer-box blank filled">I</span><span class="answer-box blank filled">O</span><span class="answer-box circled filled">N</span><span class="answer-box blank filled">E</span><span class="answer-box blank filled">E</span><span class="answer-box blank filled">R</span><span class="answer-space"></span><span class="answer-box circled filled">S</span><span class="answer-box blank filled">Q</span><span class="answer-box blank filled">U</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">R</span><span class="answer-box blank filled">E</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">3.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of Kubota Gardens <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">R</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">I</span><span class="answer-box blank filled">N</span><span class="answer-box blank filled">I</span><span class="answer-box blank filled">E</span><span class="answer-box circled filled">R</span><span class="answer-space"></span><span class="answer-box blank filled">B</span><span class="answer-box blank filled">E</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">C</span><span class="answer-box circled filled">H</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">4.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of Edgar Martinez Drive <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box circled filled">S</span><span class="answer-box blank filled">O</span><span class="answer-box circled filled">D</span><span class="answer-box blank filled">O</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">5.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of Lambert House <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">C</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">P</span><span class="answer-box blank filled">I</span><span class="answer-box circled filled">T</span><span class="answer-box blank filled">O</span><span class="answer-box blank filled">L</span><span class="answer-space"></span><span class="answer-box circled filled">H</span><span class="answer-box blank filled">I</span><span class="answer-box blank filled">L</span><span class="answer-box blank filled">L</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">6.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of El Centro de la Raza <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">B</span><span class="answer-box circled filled">E</span><span class="answer-box blank filled">A</span><span class="answer-box blank filled">C</span><span class="answer-box blank filled">O</span><span class="answer-box blank filled">N</span><span class="answer-space"></span><span class="answer-box blank filled">H</span><span class="answer-box blank filled">I</span><span class="answer-box circled filled">L</span><span class="answer-box blank filled">L</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">7.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of Woodland Park Zoo <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">P</span><span class="answer-box blank filled">H</span><span class="answer-box blank filled">I</span><span class="answer-box blank filled">N</span><span class="answer-box blank filled">N</span><span class="answer-box circled filled">E</span><span class="answer-box blank filled">Y</span><span class="answer-space"></span><span class="answer-box blank filled">R</span><span class="answer-box blank filled">I</span><span class="answer-box blank filled">D</span><span class="answer-box circled filled">G</span><span class="answer-box blank filled">E</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">8.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of a replica of the Statue of Liberty <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box circled filled">A</span><span class="answer-box blank filled">L</span><span class="answer-box blank filled">K</span><span class="answer-box blank filled">I</span><span class="answer-space"></span><span class="answer-box blank filled">P</span><span class="answer-box blank filled">O</span><span class="answer-box blank filled">I</span><span class="answer-box blank filled">N</span><span class="answer-box circled filled">T</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">9.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of a famous troll <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box blank filled">F</span><span class="answer-box blank filled">R</span><span class="answer-box circled filled">E</span><span class="answer-box blank filled">M</span><span class="answer-box circled filled">O</span><span class="answer-box blank filled">N</span><span class="answer-box blank filled">T</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-number">10.</div>
+    <div class="entry-body">
+      <div class="entry-clue">Home of The Crocodile <span class="entry-points">(1 point)</span></div>
+      <div class="entry-blanks"><span class="answer-box circled filled">B</span><span class="answer-box blank filled">E</span><span class="answer-box blank filled">L</span><span class="answer-box blank filled">L</span><span class="answer-box blank filled">T</span><span class="answer-box circled filled">O</span><span class="answer-box blank filled">W</span><span class="answer-box blank filled">N</span></div>
+    </div>
+  </div>
+  </div>
+
+  <div class="connection-section">
+    <div class="connection-label">&#9733; The Connection <span class="entry-points">(5 points)</span>:</div>
+    <div class="final-answer-row" style="font-size:13pt; font-weight:bold; letter-spacing:2px;">
+      SEATTLE NEIGHBORHOODS
+    </div>
+  </div>
+
+  
+  <div style="margin-top:20px; border-top:1px solid #aaa; padding-top:12px; font-size:10pt; color:#333;">
+    <div style="font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Hints from this week's puzzles:</div>
+    <div>Crossword theme: <strong>EMERALD CITY</strong></div>
+    <div>Find It! answer: <strong>LOCALS</strong></div>
+  </div>
+
+  <div class="license" style="margin-top:24px;">This puzzle is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. &copy; 2026 Rebel's Blog</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-02",
+  "title": "Math Magic",
+  "target": 42,
+  "howToPlay": "Answer each clue with a number, then follow the instruction beneath it. Work strictly top to bottom — each step acts on the running total so far, NOT on the individual numbers. The final result will be the answer to life, the universe, and everything.",
+  "scoring": "1 point per correct answer (10 possible), plus 5 points for the correct final result.",
+  "finalLabel": "Final Answer",
+  "example": {
+    "caption": "Three clues, worked through top to bottom:",
+    "target": 110,
+    "entries": [
+      { "clue": "Number of Dalmatians in a 1961 Disney movie",        "answer": 101, "op": "start" },
+      { "clue": "Number of sides on a dodecahedron",                  "answer": 12,  "op": "+", "connector": "take the total so far and add" },
+      { "clue": "Number of floating bridges crossing Lake Washington","answer": 3,   "op": "-", "connector": "then take the current total and subtract" }
+    ]
+  },
+  "entries": [
+    { "clue": "Regular season home runs hit by Cal Raleigh in 2025",
+      "answer": 60, "op": "start" },
+    { "clue": "Character played by Millie Bobby Brown on Stranger Things",
+      "answer": 11, "op": "+", "connector": "take the total so far and add" },
+    { "clue": "Number of children of Edmund and Violet Bridgerton",
+      "answer": 8, "op": "-", "connector": "then take the current total and subtract" },
+    { "clue": "Number of teaspoons in a tablespoon",
+      "answer": 3, "op": "/", "connector": "now divide the total by" },
+    { "clue": "\"My baby is a ___\" — lyric from Beyoncé's Countdown",
+      "answer": 10, "op": "-", "connector": "take the current total and subtract" },
+    { "clue": "Number of counties in Washington State",
+      "answer": 39, "op": "+", "connector": "then add" },
+    { "clue": "Lowest positive prime number",
+      "answer": 2, "op": "*", "connector": "now multiply the total by" },
+    { "clue": "Vision ____: Seattle's traffic safety goal",
+      "answer": 0, "op": "^", "connector": "then raise the total to the power of" },
+    { "clue": "First half of Dictionary.com's 2025 Word of the Year",
+      "answer": 6, "op": "*", "connector": "now multiply the total by" },
+    { "clue": "Second half of Dictionary.com's 2025 Word of the Year",
+      "answer": 7, "op": "*", "connector": "and finally multiply the total by" }
+  ],
+  "hints": {
+    "crosswordTheme": "FORTYTWO",
+    "secondaryLabel": "Clean Up!",
+    "secondaryAnswer": "FORTYTWO"
+  }
+}

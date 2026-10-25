@@ -1,0 +1,18 @@
+{
+  "theme": "BEST IN SHOW",
+  "crosswordHint": "BEST IN SHOW",
+  "findItAnswer": "BREEDS",
+  "crosswordUrl": "https://rebel-the-dog.com/puzzles/crossword-04082026.html",
+  "findItUrl": "https://rebel-the-dog.com/puzzles/find-it-04082026.html",
+  "finalAnswer": "DOG SHOW GROUPS",
+  "displayOrder": ["TOY", "TERRIER", "HOUND", "HERDING", "SPORTING", "WORKING", "NON-SPORTING"],
+  "entries": [
+    { "word": "TOY",          "circlePositions": [2],      "difficulty": 1, "clue": "Word after \"boy\" or \"chew\"" },
+    { "word": "SPORTING",     "circlePositions": [1,8],    "difficulty": 3, "clue": "Fair" },
+    { "word": "NON-SPORTING", "circlePositions": [2,5,6],  "difficulty": 2, "clue": "Opposite of #2" },
+    { "word": "HERDING",      "circlePositions": [1,4],    "difficulty": 2, "clue": "Useful instinct for ranchers" },
+    { "word": "TERRIER",      "circlePositions": [3],      "difficulty": 1, "clue": "Toto in \"The Wizard of Oz\", eg." },
+    { "word": "HOUND",        "circlePositions": [2,3],    "difficulty": 1, "clue": "A fox's unusual friend in a Disney movie" },
+    { "word": "WORKING",      "circlePositions": [1,7],    "difficulty": 3, "clue": "Like Melanie Griffith's character in a 1988 movie" }
+  ]
+}

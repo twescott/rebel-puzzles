@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Matchmaking</title>
+  <style>
+    @page { size: letter; margin: 0.5in; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; font-size: 11pt; color: #111; background: #fff; }
+    p { line-height: 1.5; }
+
+    .page { width: 100%; min-height: 10in; display: flex; flex-direction: column; padding: 0; }
+    .page-break { page-break-after: always; }
+    .page-content { flex: 1; }
+
+    .puzzle-header {
+      text-align: center;
+      border-bottom: 3px double #111;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+    .brand  { font-size: 9pt; text-transform: uppercase; letter-spacing: 2px; color: #555; margin-bottom: 4px; }
+    .puzzle-title { font-size: 22pt; font-weight: bold; letter-spacing: 1px; }
+    .puzzle-subtitle { font-size: 12pt; color: #444; margin-top: 4px; font-style: italic; }
+    .byline { font-size: 9pt; color: #666; margin-top: 4px; }
+
+    .instructions {
+      background: #f5f5f5; border: 1px solid #ccc; border-radius: 4px;
+      padding: 6px 12px; font-size: 9.5pt; margin-bottom: 10px;
+      text-align: center; line-height: 1.35;
+    }
+
+    /* Cover page */
+    .cover-title { text-align: center; font-size: 22pt; font-weight: bold; margin-bottom: 8px; }
+    .cover-intro { font-size: 9.5pt; margin-bottom: 6px; line-height: 1.35; }
+    .cover-how { font-size: 9.5pt; margin-bottom: 6px; line-height: 1.35; }
+
+    /* Example box */
+    .example-box {
+      border: 1px solid #ccc; border-radius: 4px; padding: 12px 16px;
+      background: #fafafa; margin: 12px 0;
+    }
+    .ex-label { font-weight: bold; font-size: 10.5pt; margin-bottom: 8px; }
+    .ex-columns { display: flex; gap: 40px; margin-bottom: 10px; }
+    .ex-left { flex: 1; }
+    .ex-right { flex: 1; }
+    .ex-left-item { font-size: 10.5pt; margin-bottom: 4px; }
+    .ex-right-item { font-size: 10.5pt; margin-bottom: 4px; font-family: 'Courier New', monospace; letter-spacing: 1px; }
+    .ex-answer { font-size: 11pt; font-weight: bold; text-align: center; margin-top: 6px; }
+
+    .circled-letter {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 1.4em; height: 1.4em; border: 2px solid #111;
+      border-radius: 50%; font-weight: bold; margin: 0 1px;
+    }
+    .circled-letter-sm {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 1.3em; height: 1.3em; border: 1.5px solid #111;
+      border-radius: 50%; font-weight: bold; margin: 0 1px; font-size: 0.9em;
+    }
+    .circle-num { font-weight: bold; color: #333; }
+
+    .filled-answer {
+      font-family: 'Courier New', monospace; font-weight: bold;
+      letter-spacing: 1px; font-size: 10pt;
+    }
+    .filled-final {
+      font-family: 'Courier New', monospace; font-weight: bold;
+      font-size: 11pt;
+    }
+
+    /* Example box (scaled-down version of puzzle) */
+    .example-box {
+      border: 1px solid #ccc; border-radius: 4px; padding: 10px 14px;
+      background: #fafafa; margin: 12px 0;
+    }
+    .ex-label { font-weight: bold; font-size: 10pt; margin-bottom: 6px; }
+    .ex-word-bank { margin-bottom: 8px; }
+    .ex-bank-words { padding: 6px 10px; }
+    .ex-bank-word { font-size: 8.5pt; padding: 1px 4px; }
+    .ex-clue-row { margin-bottom: 6px; font-size: 9.5pt; }
+    .ex-num { min-width: 20px; font-size: 9.5pt; }
+    .ex-text { font-size: 9.5pt; width: 1.6in; flex-shrink: 0; line-height: 1.3; }
+    .ex-blank { }
+    .ex-pts { font-size: 8pt; }
+    .ex-answer-section { margin-top: 8px; padding-top: 8px; }
+    .ex-answer-label { font-size: 9.5pt; }
+    .ex-answer-blank { width: 24px; height: 28px; }
+    .word-bank { margin-bottom: 10px; }
+    .bank-label {
+      font-weight: bold; font-size: 9pt; text-transform: uppercase;
+      letter-spacing: 2px; text-align: center; margin-bottom: 4px; color: #555;
+    }
+    .bank-words {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 3px 7px;
+      padding: 6px 10px; background: #f5f5f5; border: 1px solid #ccc; border-radius: 4px;
+    }
+    .bank-word {
+      font-family: 'Courier New', monospace; font-size: 8.5pt; letter-spacing: 0.5px;
+      padding: 1px 5px; background: #fff; border: 1px solid #ddd; border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .clue-list { margin-bottom: 8px; }
+    .clue-row {
+      display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 10.5pt;
+    }
+    .left-num { font-weight: bold; color: #555; min-width: 20px; flex-shrink: 0; }
+    .clue-text { width: 2.0in; flex-shrink: 0; line-height: 1.3; }
+    .answer-boxes { display: flex; gap: 2px; flex-shrink: 0; padding-top: 2px; }
+    .lblank {
+      display: inline-flex; align-items: flex-end; justify-content: center; flex-shrink: 0;
+      border-bottom: 1.5px solid #111; height: 1.35em; padding-bottom: 1px;
+      font-family: 'Courier New', monospace; font-weight: bold; font-size: 11pt;
+    }
+    .lblank.circled {
+      border: 2px solid #111; border-radius: 50%; align-items: center;
+      padding-bottom: 0;
+    }
+    .clue-pts { font-size: 8pt; color: #666; white-space: nowrap; flex-shrink: 0; padding-top: 3px; }
+
+    .puzzle-columns { display: flex; gap: 30px; margin-bottom: 24px; }
+    .puzzle-left { flex: 1; }
+    .puzzle-right { flex: 1; }
+    .puzzle-left-item { font-size: 11.5pt; margin-bottom: 8px; line-height: 1.4; }
+    .puzzle-right-item {
+      font-size: 11pt; margin-bottom: 6px;
+      font-family: 'Courier New', monospace; letter-spacing: 2px;
+      padding: 3px 8px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 3px;
+      display: inline-block;
+    }
+
+    /* Answer blanks */
+    .answer-section { text-align: center; margin-top: 12px; padding-top: 10px; border-top: 1px solid #aaa; }
+    .answer-row { display: flex; align-items: flex-end; justify-content: center; gap: 10px; }
+    .answer-label { font-weight: bold; font-size: 11pt; white-space: nowrap; }
+    .answer-blanks { display: flex; justify-content: center; gap: 4px; }
+    .answer-blank {
+      width: 26px; height: 30px; border-bottom: 2px solid #111;
+      display: flex; align-items: flex-end; justify-content: center;
+      font-size: 8pt; color: #888; padding-bottom: 2px;
+    }
+    .answer-pts { font-size: 9pt; color: #666; white-space: nowrap; padding-bottom: 4px; }
+
+    /* Answer key */
+    .relation-reveal { text-align: center; font-size: 10.5pt; color: #444; margin-top: 12px; }
+
+    /* Feedback / footer */
+    .feedback {
+      border-top: 1px solid #aaa; padding-top: 4px; margin-top: auto;
+      font-size: 8.5pt; color: #333; line-height: 1.2;
+    }
+    .feedback-title { font-weight: 700; letter-spacing: .06em; font-size: 8pt; color: #444; margin-bottom: 2px; }
+    .feedback-row { margin-bottom: 2px; }
+    .footer-note { margin-top: 3px; font-size: 8pt; font-style: italic; color: #555; }
+    .license { margin-top: 2px; font-size: 7.5pt; color: #777; }
+
+    .scoring { font-size: 10.5pt; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page page-break" style="padding:0;">
+  <div style="flex:1;">
+    <h1 class="cover-title">Rebel's Puzzles</h1>
+
+    <p class="cover-intro">Rebel's Puzzles is a social experiment being conducted by Rebel's Dad on the patrons of Growlerz Trivia Night. He thinks this will be a fun addition to Caryn's awesome trivia questions. Like Rebel, Rebel's Dad responds well to feedback. Train him well.</p>
+
+    <p class="cover-how">Each Sunday, there will be a new puzzle on Rebel's Blog, followed by a new &ldquo;Find It!&rdquo; puzzle on Tuesday. These puzzles will provide hints to the weekly Growlerz Trivia Night puzzle.</p>
+
+    
+
+    <h2 style="font-size:12pt;font-weight:bold;margin-bottom:6px;">Tonight's Puzzle</h2>
+
+    <p style="font-size:10pt;margin-bottom:8px;line-height:1.4;">
+      Tonight's puzzle is called &ldquo;Matchmaking&rdquo;. Match each clue on the left with exactly one answer from the word bank, writing one letter per blank. The circled letters will spell out a classic movie quote from a character whose real name is never given. Count letters only — ignore spaces and punctuation. Not all answers will fill the available letter blanks. One blank in each answer is circled &mdash; that&rsquo;s the letter to circle. Read the circled letters top to bottom to reveal the <strong>Final Answer</strong>.
+    </p>
+
+    <p style="font-size:10pt;margin-bottom:6px;"><strong>1 point</strong> per correct match · <strong>5 points</strong> for the final answer.</p>
+
+    <p style="font-weight:bold;margin-bottom:4px;font-size:10pt;">Example:</p>
+
+    
+    <div class="example-box">
+      <div class="ex-label">Example: Owner → Pet</div>
+      <div class="word-bank ex-word-bank">
+        <div class="bank-words ex-bank-words"><span class="bank-word ex-bank-word">OTTO</span><span class="bank-word ex-bank-word">ODIE</span><span class="bank-word ex-bank-word">SNOOPY</span><span class="bank-word ex-bank-word">SCOOBY-DOO</span><span class="bank-word ex-bank-word">FANG</span><span class="bank-word ex-bank-word">OLD YELLER</span><span class="bank-word ex-bank-word">HOBBES</span></div>
+      </div>
+      <div class="clue-list"><div class="clue-row ex-clue-row">
+      <span class="left-num ex-num">1.</span>
+      <span class="clue-text ex-text">Jon Arbuckle</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">O</span><span class="lblank circled" style="width:22px">D</span><span class="lblank" style="width:22px">I</span><span class="lblank" style="width:22px">E</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts ex-pts">(1 pt)</span>
+    </div><div class="clue-row ex-clue-row">
+      <span class="left-num ex-num">2.</span>
+      <span class="clue-text ex-text">Charlie Brown</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">S</span><span class="lblank" style="width:22px">N</span><span class="lblank circled" style="width:22px">O</span><span class="lblank" style="width:22px">O</span><span class="lblank" style="width:22px">P</span><span class="lblank" style="width:22px">Y</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts ex-pts">(1 pt)</span>
+    </div><div class="clue-row ex-clue-row">
+      <span class="left-num ex-num">3.</span>
+      <span class="clue-text ex-text">Hagrid</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">F</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">N</span><span class="lblank circled" style="width:22px">G</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts ex-pts">(1 pt)</span>
+    </div></div>
+      <div class="answer-section ex-answer-section">
+        <div class="answer-row">
+          <span class="answer-label ex-answer-label">Final Answer:</span>
+          <span class="answer-blanks"><span class="answer-blank ex-answer-blank"><span class="filled-final">D</span></span><span class="answer-blank ex-answer-blank"><span class="filled-final">O</span></span><span class="answer-blank ex-answer-blank"><span class="filled-final">G</span></span></span>
+          <span class="answer-pts ex-pts">(5 points)</span>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  <div class="feedback">
+    <div class="footer-note">Like the puzzle? Buy Rebel's Dad/Rebel a drink/Pup Cup. Find a mistake? Rebel's Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+    <div class="license">This puzzle is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. &copy; 2026 Rebel's Blog</div>
+  </div>
+</div>
+
+<!-- PAGE 2: PUZZLE -->
+<div class="page page-break">
+  <div class="page-content">
+    <div class="puzzle-header">
+      <div class="brand">Rebel's Puzzles</div>
+      <div class="puzzle-title">Matchmaking</div>
+      
+      <div class="byline">By Rebel's Dad</div>
+    </div>
+    
+    
+    <div class="instructions">Match each clue to one answer in the word bank, then circle the marked letter and read the circled letters top to bottom for the <strong>Final Answer</strong>. The circled letters will spell out a classic movie quote from a character whose real name is never given. Count letters only — ignore spaces and punctuation. Not all answers will fill the available letter blanks.</div>
+  
+    <div class="word-bank">
+      <div class="bank-label">Answer Words</div>
+      <div class="bank-words"><span class="bank-word">APOLLO CREED</span><span class="bank-word">BLANCHE DUBOIS</span><span class="bank-word">CLARICE STARLING</span><span class="bank-word">DOROTHY GALE</span><span class="bank-word">ELPHABA</span><span class="bank-word">EVELYN WANG</span><span class="bank-word">HANNIBAL LECTER</span><span class="bank-word">JACK DAWSON</span><span class="bank-word">JIMMY DUGAN</span><span class="bank-word">JOBU TUPAKI</span><span class="bank-word">LIEUTENANT WORF</span><span class="bank-word">MAMMY</span><span class="bank-word">MIRABEL MADRIGAL</span><span class="bank-word">MOANA</span><span class="bank-word">MULAN</span><span class="bank-word">NORMA DESMOND</span><span class="bank-word">ROCKY BALBOA</span><span class="bank-word">SCARLETT O'HARA</span><span class="bank-word">THE MANDALORIAN</span></div>
+    </div>
+    <div class="clue-list"><div class="clue-row">
+      <span class="left-num">1.</span>
+      <span class="clue-text">"Toto, I've a feeling we're not in Kansas anymore."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank circled" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">2.</span>
+      <span class="clue-text">"A census taker once tried to test me. I ate his liver with some fava beans and a nice Chianti."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank circled" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">3.</span>
+      <span class="clue-text">"No, I did not eat grass as a child; and yes, I've always been green"</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank circled" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">4.</span>
+      <span class="clue-text">"As God is my witness, I'll never be hungry again."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank circled" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">5.</span>
+      <span class="clue-text">"Yo, Adrian!"</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px"></span><span class="lblank circled" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">6.</span>
+      <span class="clue-text">"Even in a stupid, stupid universe where we have hot dogs for fingers, we get very good with our feet."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank circled" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">7.</span>
+      <span class="clue-text">"Today is a good day to die"</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank circled" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">8.</span>
+      <span class="clue-text">"I have always depended on the kindness of strangers."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank circled" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">9.</span>
+      <span class="clue-text">"I'm the king of the world!"</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank circled" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">10.</span>
+      <span class="clue-text">"There's no crying in baseball!"</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank circled" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">11.</span>
+      <span class="clue-text">"All right, Mr. DeMille, I'm ready for my close-up."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank circled" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div></div>
+    <div class="answer-section">
+      <div class="answer-row">
+        <span class="answer-label">Final Answer:</span>
+        <span class="answer-blanks"><span class="answer-blank"></span><span class="answer-blank"></span><span class="answer-blank"></span><span class="answer-blank"></span><span class="answer-blank"></span><span class="answer-blank"></span><span class="answer-blank"></span><span class="answer-blank"></span><span class="answer-blank"></span><span class="answer-blank"></span><span class="answer-blank"></span></span>
+        <span class="answer-pts">(5 points)</span>
+      </div>
+    </div>
+  
+  </div>
+  <div class="feedback">
+    <div class="feedback-title">FEEDBACK</div>
+    <div class="feedback-row">Like this puzzle? &#9744; Yes &#9744; No &nbsp;&nbsp;&middot;&nbsp;&nbsp; Difficulty? &#9744; Too Easy &#9744; Just Right &#9744; Too Hard</div>
+    <div class="feedback-row">Did you like the Crossword? &#9744; Yes &#9744; No &nbsp;&nbsp;&middot;&nbsp;&nbsp; Did you like the Find It!? &#9744; Yes &#9744; No</div>
+    <div class="footer-note">Like the puzzle? Buy Rebel's Dad/Rebel a drink/Pup Cup. Find a mistake? Rebel's Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+    <div class="license">This puzzle is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. &copy; 2026 Rebel's Blog</div>
+  </div>
+</div>
+
+<!-- PAGE 3: ANSWER KEY -->
+<div class="page">
+  <div class="puzzle-header">
+    <div class="brand">Answer Key</div>
+    <div class="puzzle-title">Matchmaking</div>
+    
+  </div>
+  
+    <div class="clue-list"><div class="clue-row">
+      <span class="left-num">1.</span>
+      <span class="clue-text">"Toto, I've a feeling we're not in Kansas anymore."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">D</span><span class="lblank" style="width:22px">O</span><span class="lblank" style="width:22px">R</span><span class="lblank" style="width:22px">O</span><span class="lblank" style="width:22px">T</span><span class="lblank" style="width:22px">H</span><span class="lblank" style="width:22px">Y</span><span class="lblank" style="width:22px">G</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">L</span><span class="lblank circled" style="width:22px">E</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">2.</span>
+      <span class="clue-text">"A census taker once tried to test me. I ate his liver with some fava beans and a nice Chianti."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">H</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">N</span><span class="lblank" style="width:22px">N</span><span class="lblank" style="width:22px">I</span><span class="lblank" style="width:22px">B</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">L</span><span class="lblank" style="width:22px">L</span><span class="lblank" style="width:22px">E</span><span class="lblank" style="width:22px">C</span><span class="lblank circled" style="width:22px">T</span><span class="lblank" style="width:22px">E</span><span class="lblank" style="width:22px">R</span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">3.</span>
+      <span class="clue-text">"No, I did not eat grass as a child; and yes, I've always been green"</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">E</span><span class="lblank" style="width:22px">L</span><span class="lblank circled" style="width:22px">P</span><span class="lblank" style="width:22px">H</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">B</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">4.</span>
+      <span class="clue-text">"As God is my witness, I'll never be hungry again."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">S</span><span class="lblank" style="width:22px">C</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">R</span><span class="lblank" style="width:22px">L</span><span class="lblank" style="width:22px">E</span><span class="lblank" style="width:22px">T</span><span class="lblank" style="width:22px">T</span><span class="lblank" style="width:22px">O</span><span class="lblank circled" style="width:22px">H</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">R</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">5.</span>
+      <span class="clue-text">"Yo, Adrian!"</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">R</span><span class="lblank circled" style="width:22px">O</span><span class="lblank" style="width:22px">C</span><span class="lblank" style="width:22px">K</span><span class="lblank" style="width:22px">Y</span><span class="lblank" style="width:22px">B</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">L</span><span class="lblank" style="width:22px">B</span><span class="lblank" style="width:22px">O</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">6.</span>
+      <span class="clue-text">"Even in a stupid, stupid universe where we have hot dogs for fingers, we get very good with our feet."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">E</span><span class="lblank" style="width:22px">V</span><span class="lblank" style="width:22px">E</span><span class="lblank" style="width:22px">L</span><span class="lblank" style="width:22px">Y</span><span class="lblank circled" style="width:22px">N</span><span class="lblank" style="width:22px">W</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">N</span><span class="lblank" style="width:22px">G</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">7.</span>
+      <span class="clue-text">"Today is a good day to die"</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">L</span><span class="lblank" style="width:22px">I</span><span class="lblank circled" style="width:22px">E</span><span class="lblank" style="width:22px">U</span><span class="lblank" style="width:22px">T</span><span class="lblank" style="width:22px">E</span><span class="lblank" style="width:22px">N</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">N</span><span class="lblank" style="width:22px">T</span><span class="lblank" style="width:22px">W</span><span class="lblank" style="width:22px">O</span><span class="lblank" style="width:22px">R</span><span class="lblank" style="width:22px">F</span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">8.</span>
+      <span class="clue-text">"I have always depended on the kindness of strangers."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">B</span><span class="lblank" style="width:22px">L</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">N</span><span class="lblank" style="width:22px">C</span><span class="lblank circled" style="width:22px">H</span><span class="lblank" style="width:22px">E</span><span class="lblank" style="width:22px">D</span><span class="lblank" style="width:22px">U</span><span class="lblank" style="width:22px">B</span><span class="lblank" style="width:22px">O</span><span class="lblank" style="width:22px">I</span><span class="lblank" style="width:22px">S</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">9.</span>
+      <span class="clue-text">"I'm the king of the world!"</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">J</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">C</span><span class="lblank" style="width:22px">K</span><span class="lblank" style="width:22px">D</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">W</span><span class="lblank" style="width:22px">S</span><span class="lblank circled" style="width:22px">O</span><span class="lblank" style="width:22px">N</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">10.</span>
+      <span class="clue-text">"There's no crying in baseball!"</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">J</span><span class="lblank" style="width:22px">I</span><span class="lblank circled" style="width:22px">M</span><span class="lblank" style="width:22px">M</span><span class="lblank" style="width:22px">Y</span><span class="lblank" style="width:22px">D</span><span class="lblank" style="width:22px">U</span><span class="lblank" style="width:22px">G</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">N</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div><div class="clue-row">
+      <span class="left-num">11.</span>
+      <span class="clue-text">"All right, Mr. DeMille, I'm ready for my close-up."</span>
+      <span class="answer-boxes"><span class="lblank" style="width:22px">N</span><span class="lblank" style="width:22px">O</span><span class="lblank" style="width:22px">R</span><span class="lblank" style="width:22px">M</span><span class="lblank" style="width:22px">A</span><span class="lblank" style="width:22px">D</span><span class="lblank circled" style="width:22px">E</span><span class="lblank" style="width:22px">S</span><span class="lblank" style="width:22px">M</span><span class="lblank" style="width:22px">O</span><span class="lblank" style="width:22px">N</span><span class="lblank" style="width:22px">D</span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span><span class="lblank" style="width:22px"></span></span>
+      <span class="clue-pts">(1 pt)</span>
+    </div></div>
+    <div class="answer-section">
+      <div class="answer-row">
+        <span class="answer-label">Final Answer:</span>
+        <span class="answer-blanks"><span class="answer-blank"><span class="filled-final">E</span></span><span class="answer-blank"><span class="filled-final">T</span></span><span class="answer-blank"><span class="filled-final">P</span></span><span class="answer-blank"><span class="filled-final">H</span></span><span class="answer-blank"><span class="filled-final">O</span></span><span class="answer-blank"><span class="filled-final">N</span></span><span class="answer-blank"><span class="filled-final">E</span></span><span class="answer-blank"><span class="filled-final">H</span></span><span class="answer-blank"><span class="filled-final">O</span></span><span class="answer-blank"><span class="filled-final">M</span></span><span class="answer-blank"><span class="filled-final">E</span></span></span>
+        <span class="answer-pts">(5 points)</span>
+      </div>
+    </div>
+  
+  
+    <div style="margin-top:16px;padding:10px 14px;border:1px solid #ccc;border-radius:6px;background:#f9f9f9;">
+      <div style="font-weight:bold;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-size:9pt;">Hints from this week's puzzles:</div>
+      <div style="font-size:10pt;">Crossword theme: <strong>CATCHPHRASE</strong></div>
+      <div style="font-size:10pt;">Find It! answer: <strong>QUOTE</strong></div>
+    </div>
+  <div class="license" style="margin-top:24px;font-size:8pt;color:#777;">
+    This puzzle is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. &copy; 2026 Rebel's Blog
+  </div>
+</div>
+
+</body>
+</html>

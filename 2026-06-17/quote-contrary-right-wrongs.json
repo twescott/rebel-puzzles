@@ -1,0 +1,48 @@
+{
+  "hiddenQuote": "The way to right wrongs is to turn the light of truth upon them.",
+  "author": "Ida B. Wells",
+  "secondaryName": "Clean Up",
+  "authorPoints": 5,
+  "sourceHint": "Southern Horrors: Lynch Law in All Its Phases (1892)",
+  "crosswordSolution": "CIVIL RIGHTS",
+  "findItSolution": "JUNETEENTH",
+  "authorEntry": {
+    "word1": "Sojourner Truth",
+    "word2": "Booker T. Washington",
+    "word3": "John Lewis",
+    "word4": "Rosa Parks",
+    "connection": "Civil rights leaders"
+  },
+  "entries": [
+    { "quoteWord": "THE",  "given": true },
+    { "quoteWord": "WAY",  "given": true },
+    { "quoteWord": "TO",   "given": true },
+    {
+      "quoteWord": "RIGHT",
+      "word1": "LEFT", "word2": "PROGRESSIVE", "word3": "LIBERAL", "word4": "DEMOCRATIC",
+      "connection": "The political left"
+    },
+    { "quoteWord": "WRONGS", "given": true },
+    { "quoteWord": "IS",     "given": true },
+    { "quoteWord": "TO",     "given": true },
+    {
+      "quoteWord": "TURN",
+      "word1": "PERSEVERE", "word2": "STAY", "word3": "PERSIST", "word4": "CONTINUE",
+      "connection": "Synonyms for \"keep going\""
+    },
+    { "quoteWord": "THE", "given": true },
+    {
+      "quoteWord": "LIGHT",
+      "word1": "HELLO", "word2": "DARKNESS", "word3": "OLD", "word4": "FRIEND",
+      "connection": "Lyrics from the opening line of \"The Sound of Silence\""
+    },
+    { "quoteWord": "OF", "given": true },
+    {
+      "quoteWord": "TRUTH",
+      "word1": "WORD", "word2": "EXCEL", "word3": "OUTLOOK", "word4": "COPILOT",
+      "connection": "Microsoft apps"
+    },
+    { "quoteWord": "UPON", "given": true },
+    { "quoteWord": "THEM", "given": true }
+  ]
+}

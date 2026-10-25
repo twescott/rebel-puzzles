@@ -1,0 +1,55 @@
+{
+  "crosswordSolution": "DIAMONDS",
+  "findItSolution": "UMBRELLA",
+  "secondaryName": "Clean Up",
+  "secondaryLabel": "Clean Up!",
+  "quoteDescriptor": "song lyric",
+  "hiddenQuote": "STICKS and STONES may BREAK my BONES, but CHAINS and WHIPS excite me.",
+  "speaker": "Rihanna",
+  "speakerLabel": "Who sang it?",
+  "entries": [
+    {
+      "quoteWord": "STICKS",
+      "word1": "RODS",
+      "word2": "CONES",
+      "word3": "PUPILS",
+      "connection": "Parts of the eye"
+    },
+    { "quoteWord": "and", "given": true },
+    {
+      "quoteWord": "STONES",
+      "word1": "PEBBLES",
+      "word2": "FRED",
+      "word3": "WILMA",
+      "connection": "The Flintstones"
+    },
+    { "quoteWord": "may", "given": true },
+    {
+      "quoteWord": "BREAK",
+      "word1": "PAUSE",
+      "word2": "REWIND",
+      "word3": "PLAY",
+      "connection": "Video playback buttons"
+    },
+    { "quoteWord": "my", "given": true },
+    {
+      "quoteWord": "BONES",
+      "word1": "HOUSE",
+      "word2": "ER",
+      "word3": "THE PITT",
+      "connection": "Medical dramas"
+    },
+    { "quoteWord": "but", "given": true },
+    { "quoteWord": "CHAINS", "given": true },
+    { "quoteWord": "and", "given": true },
+    {
+      "quoteWord": "WHIPS",
+      "word1": "BEATS",
+      "word2": "RHYTHMS",
+      "word3": "TEMPOS",
+      "connection": "Musical paces"
+    },
+    { "quoteWord": "excite", "given": true },
+    { "quoteWord": "me", "given": true }
+  ]
+}

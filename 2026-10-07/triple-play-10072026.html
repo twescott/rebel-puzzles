@@ -1,0 +1,102 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Triple Play — 2026-10-07</title><style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--navy:#1e3a5f;--gold:#b8860b;--ink:#1c1917;--line:#d6d3d1;--grid:#7c766f;--cream:#fbfaf8;--blue:#eef2f7}
+  html,body{font-family:Georgia,'Times New Roman',serif;color:var(--ink)}
+  .sheet{width:11in;min-height:7.3in;padding:0.32in 0.38in;margin:0 auto;display:flex;flex-direction:column;page-break-after:always;background:#fff}
+  .sheet:last-child{page-break-after:auto}
+  @media screen{ html{background:#d7d7d7} body{padding:22px 0} .sheet{box-shadow:0 4px 18px rgba(0,0,0,.28);margin:0 auto 24px} }
+  @page{size:letter landscape;margin:0}
+  .brandbar{text-align:center;border-bottom:3px solid var(--navy);padding-bottom:7pt;margin-bottom:8pt}
+  .eyebrow{font-family:Arial,Helvetica,sans-serif;letter-spacing:.22em;font-size:9pt;color:var(--gold);font-weight:700;text-transform:uppercase}
+  h1{font-size:30pt;color:var(--navy);line-height:1;margin-top:3pt}
+  .explain-title{font-size:19pt;color:var(--navy);font-weight:700;text-align:center;margin-bottom:5pt}
+  .body{font-size:11.5pt;line-height:1.4;margin:0 auto 7pt;max-width:8.8in;text-align:center}
+  .body b{color:var(--navy)}
+  .tonight{font-family:Arial,Helvetica,sans-serif;font-size:12pt;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;text-align:center;margin:9pt 0 5pt}
+  .instr{font-size:12pt;line-height:1.35;text-align:center;max-width:8.8in;margin:0 auto 6pt}
+  .instr b{color:var(--navy)}
+  /* Triple Play grid */
+  /* NOTE: no overflow:hidden here — it clipped the absolutely-positioned .tp-rownum
+     gutter and the row numbers vanished from the printed page. Corners are rounded on
+     the head/last row instead. */
+  .tp-grid{margin:8pt auto 0;width:9.9in;border:2px solid var(--navy);border-radius:8px}
+  .tp-row:first-child .tp-cell:first-child{border-top-left-radius:6px}
+  .tp-row:first-child .tp-cell:last-of-type{border-top-right-radius:6px}
+  .tp-row:last-child .tp-cell:first-child{border-bottom-left-radius:6px}
+  .tp-row:last-child .tp-cell:last-of-type{border-bottom-right-radius:6px}
+  .tp-row{display:flex;position:relative;border-bottom:1.5px solid var(--grid)}
+  .tp-row:last-child{border-bottom:0}
+  .tp-cell{flex:1 1 0;min-width:0;padding:9pt 8pt;font-size:12.5pt;font-weight:600;text-align:center;display:flex;align-items:center;justify-content:center;border-right:1.5px solid var(--grid);min-height:40pt;line-height:1.15}
+  .tp-cell:last-of-type{border-right:0}
+  .tp-head{background:var(--navy)}
+  .compact .tp-cell{min-height:33pt;padding:6pt 8pt}
+  .compact .word-bank{margin:4pt auto 2pt}
+  .compact .feedback.bottom{margin-top:8pt}
+  .tp-th{color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:9.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.1em;min-height:26pt;padding:6pt}
+  .tp-cell.given{background:var(--blue);color:var(--navy)}
+  .tp-cell.blank{background:#fff}
+  .tp-cell.filled{background:var(--cream);color:var(--ink)}
+  .tp-rownum{position:absolute;left:-22pt;top:50%;transform:translateY(-50%);width:16pt;text-align:right;font-family:Arial,Helvetica,sans-serif;font-size:11pt;color:#78716c;font-weight:700}
+  .tp-wrap{padding-left:24pt;width:max-content;margin:0 auto}
+  /* answer bank (house style, one group per column) */
+  .word-bank{margin:6pt auto 4pt;max-width:9.9in}
+  .bank-label{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:9pt;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:3pt;color:#555}
+  .bank-group{margin-bottom:4pt}
+  .bank-group:last-child{margin-bottom:0}
+  .bank-sublabel{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:8pt;text-transform:uppercase;letter-spacing:1.5px;text-align:center;margin-bottom:2pt;color:var(--navy)}
+  .bank-words{display:flex;flex-wrap:wrap;justify-content:center;gap:3px 8px;padding:4px 10px;background:#f5f5f5;border:1px solid #ccc;border-radius:5px}
+  .bank-word{font-family:'Courier New',monospace;font-size:9pt;letter-spacing:.5px;padding:1px 7px;background:#fff;border:1px solid #ccd;border-radius:3px;white-space:nowrap;color:var(--navy)}
+  /* example */
+  .ex{margin:8pt auto 0;max-width:8.6in;border:1px solid var(--line);border-radius:8px;padding:8pt 14pt 12pt;background:#fafafa}
+  .ex-head{font-family:Arial,Helvetica,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:9pt;color:#555;text-align:center;margin-bottom:5pt}
+  .ex .tp-grid{width:100%;margin-top:4pt}
+  .ex .tp-cell{font-size:10pt;min-height:30pt;padding:5pt 6pt}
+  .ex .tp-th{font-size:8pt;min-height:20pt;padding:4pt}
+  .ex-note{font-size:9.5pt;font-style:italic;color:#57534e;text-align:center;margin-top:6pt}
+  .feedback{border-top:0.5pt solid #aaa;padding-top:7pt;margin-top:10pt}
+  .feedback.bottom{margin-top:14pt}
+  .feedback-title{font-family:Arial,Helvetica,sans-serif;font-size:8pt;font-weight:700;letter-spacing:1px;margin-bottom:4pt}
+  .feedback-line{font-size:9pt;margin-bottom:4pt}
+  .feedback-drink{font-size:8pt;font-style:italic;text-align:center;margin-top:5pt}
+  .feedback-cc{font-family:Arial,Helvetica,sans-serif;font-size:7.5pt;text-align:center;color:#888;margin-top:4pt}
+  .ak-title{font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:.14em;color:var(--gold);text-align:center;font-size:11pt;text-transform:uppercase}
+  .ak-sub{text-align:center;color:var(--navy);font-size:16pt;font-weight:700;margin-bottom:4pt}
+  .hints{margin:10pt auto 0;max-width:7in;background:var(--blue);border:1px solid #c7d2df;border-radius:8px;padding:8pt 12pt;text-align:center;font-size:11pt}
+  .hints .h{font-family:Arial,Helvetica,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:9pt;color:var(--navy);margin-bottom:3pt}
+  .copyr{text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:8pt;color:#78716c;margin-top:8pt}
+</style></head><body>
+  <div class="sheet">
+    <div class="brandbar"><div class="eyebrow">Rebel's Puzzles · Growlerz Trivia Night</div><h1>Triple Play</h1></div>
+    <div class="explain-title">Rebel’s Puzzles</div>
+    <p class="body">Rebel’s Puzzles is a social experiment being conducted by Rebel’s Dad on the patrons of Growlerz Trivia Night. He thinks this will be a fun addition to Caryn’s awesome trivia questions. Like Rebel, Rebel’s Dad responds well to feedback. Train him well.</p>
+    <div class="tonight">Tonight’s Puzzle</div>
+    <p class="body">Tonight’s puzzle is called “Triple Play.” Every row is one turtle, split across three columns: <b>Ninja Turtle / Renaissance Artist</b>, <b>Weapon</b>, <b>Iconic Work</b>. To play, each row is one Teenage Mutant Ninja Turtle — and the Renaissance artist he is named after. One box in every row is already filled in. Work out the other two: the name, the turtle's signature weapon, and the artist's most famous work. There is an <b>Answer Bank</b> for each column, and it holds more words than you need. 1 point per box you fill in correctly (<b>8 possible</b>).</p>
+    <div class="ex"><div class="ex-head">Example</div>
+  <div class="tp-wrap"><div class="tp-grid "><div class="tp-row tp-head"><div class="tp-cell tp-th">Podcast</div><div class="tp-cell tp-th">Host</div><div class="tp-cell tp-th">Previous Role</div></div><div class="tp-row"><div class="tp-cell filled">Armchair Expert</div><div class="tp-cell given">Dax Shepard</div><div class="tp-cell filled">Crosby Braverman, "Parenthood"</div><div class="tp-rownum">1</div></div><div class="tp-row"><div class="tp-cell filled">Office Ladies</div><div class="tp-cell filled">Jenna Fischer</div><div class="tp-cell given">Pam Beesly, "The Office"</div><div class="tp-rownum">2</div></div></div></div>
+  <div class="ex-note">Shaded boxes were the ones printed for you; the rest is what you would have filled in.</div></div>
+    <div class="feedback bottom">
+      <div class="feedback-drink">Like the puzzle? Buy Rebel a Pup Cup, or her dad a drink. Find a mistake? Rebel’s Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+      <div class="feedback-cc">Rebel’s Puzzles · rebel-the-dog.com · Growlerz Trivia Night 10/7/2026 · &#169; Tim Wescott · Licensed under CC BY-SA 4.0</div>
+    </div>
+  </div>
+  <div class="sheet">
+    <div class="brandbar"><div class="eyebrow">Rebel's Puzzles · Growlerz Trivia Night 10/7/2026</div><h1>Triple Play</h1></div>
+    <p class="instr">Each row is one turtle. One box per row is filled in — work out the other two using the <b>Answer Bank</b>. Not every word in the bank is used. <b>1 point per correct answer (8 possible).</b></p>
+    <div class="word-bank"><div class="bank-label">Answer Bank</div><div class="bank-words"><span class="bank-word">Artemisia</span><span class="bank-word">Bo staff</span><span class="bank-word">Donatello</span><span class="bank-word">Judith Slaying Holofernes</span><span class="bank-word">Kama</span><span class="bank-word">Katanas</span><span class="bank-word">Lavinia</span><span class="bank-word">Michelangelo</span><span class="bank-word">Minerva Dressing</span><span class="bank-word">Mona Lisa</span><span class="bank-word">Naginata</span><span class="bank-word">Nunchucks</span><span class="bank-word">Raphael</span><span class="bank-word">Shuriken</span><span class="bank-word">Sofonisba Anguissola</span><span class="bank-word">The Game of Chess</span><span class="bank-word">The School of Athens</span><span class="bank-word">Titian</span><span class="bank-word">Tonfa</span><span class="bank-word">Venus of Urbino</span></div></div>
+    <div class="tp-wrap"><div class="tp-grid "><div class="tp-row tp-head"><div class="tp-cell tp-th">Ninja Turtle / Renaissance Artist</div><div class="tp-cell tp-th">Weapon</div><div class="tp-cell tp-th">Iconic Work</div></div><div class="tp-row"><div class="tp-cell given">Leonardo</div><div class="tp-cell blank"></div><div class="tp-cell blank"></div><div class="tp-rownum">1</div></div><div class="tp-row"><div class="tp-cell blank"></div><div class="tp-cell blank"></div><div class="tp-cell given">Gattamelata</div><div class="tp-rownum">2</div></div><div class="tp-row"><div class="tp-cell blank"></div><div class="tp-cell given">Sais</div><div class="tp-cell blank"></div><div class="tp-rownum">3</div></div><div class="tp-row"><div class="tp-cell blank"></div><div class="tp-cell blank"></div><div class="tp-cell given">David</div><div class="tp-rownum">4</div></div></div></div>
+    <div class="feedback bottom">
+      <div class="feedback-title">FEEDBACK</div>
+      <div class="feedback-line">Did you like this puzzle? &nbsp;&#9744; Yes &nbsp;&#9744; No &nbsp;&nbsp;&nbsp; How was the difficulty? &nbsp;&#9744; Too Easy &nbsp;&#9744; Just Right &nbsp;&#9744; Too Hard</div>
+      <div class="feedback-line">Did you like the Crossword? &nbsp;&#9744; Yes &nbsp;&#9744; No &nbsp;&nbsp;&nbsp; Did you like the Find It!? &nbsp;&#9744; Yes &nbsp;&#9744; No</div>
+      <div class="feedback-drink">Like the puzzle? Buy Rebel a Pup Cup, or her dad a drink. Find a mistake? Rebel’s Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+      <div class="feedback-cc">Rebel’s Puzzles · rebel-the-dog.com · &#169; Tim Wescott · Licensed under CC BY-SA 4.0</div>
+    </div>
+  </div>
+  <div class="sheet">
+    <div class="ak-title">Answer Key</div>
+    <div class="ak-sub">Triple Play &mdash; Answer Key</div>
+    <div class="tp-wrap"><div class="tp-grid "><div class="tp-row tp-head"><div class="tp-cell tp-th">Ninja Turtle / Renaissance Artist</div><div class="tp-cell tp-th">Weapon</div><div class="tp-cell tp-th">Iconic Work</div></div><div class="tp-row"><div class="tp-cell given">Leonardo</div><div class="tp-cell filled">Katanas</div><div class="tp-cell filled">Mona Lisa</div><div class="tp-rownum">1</div></div><div class="tp-row"><div class="tp-cell filled">Donatello</div><div class="tp-cell filled">Bo staff</div><div class="tp-cell given">Gattamelata</div><div class="tp-rownum">2</div></div><div class="tp-row"><div class="tp-cell filled">Raphael</div><div class="tp-cell given">Sais</div><div class="tp-cell filled">The School of Athens</div><div class="tp-rownum">3</div></div><div class="tp-row"><div class="tp-cell filled">Michelangelo</div><div class="tp-cell filled">Nunchucks</div><div class="tp-cell given">David</div><div class="tp-rownum">4</div></div></div></div>
+    <div class="hints"><div class="h">Hints from this week’s puzzles</div>
+      Crossword theme: <strong>MUTANTS</strong> &nbsp;·&nbsp; Find It! answer: <strong>NINJA</strong></div>
+    <div class="copyr">&#169; Tim Wescott &nbsp;|&nbsp; Licensed under CC BY-SA 4.0</div>
+  </div></body></html>

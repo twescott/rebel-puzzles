@@ -1,0 +1,97 @@
+{
+  "theme": "CREAM CHEESE",
+  "crosswordHint": "HOTDOG",
+  "findItAnswer": "GRILL",
+  "finalAnswer": "CREAM CHEESE",
+  "description": "Today is National Hot Dog Day! Enjoy this hot-dog-themed puzzle. The final answer will give it some local flavor.",
+  "entries": [
+    {
+      "word": "SAUSAGES",
+      "circlePositions": [
+        4
+      ],
+      "difficulty": 1,
+      "clue": "Type of food that includes hot dogs and bratwursts"
+    },
+    {
+      "word": "WEINER",
+      "circlePositions": [
+        5
+      ],
+      "difficulty": 3,
+      "clue": "Former congressman Anthony whose last name sounds like a hot dog, and also what got him into trouble"
+    },
+    {
+      "word": "SANDWICH",
+      "circlePositions": [
+        7
+      ],
+      "difficulty": 3,
+      "clue": "A 2025 Marist poll found that 62% of Americans (wrongly) think a hot dog is NOT a type of this"
+    },
+    {
+      "word": "KETCHUP",
+      "circlePositions": [
+        4
+      ],
+      "difficulty": 2,
+      "clue": "Common hot dog condiment that was once characterized as a vegetable by the Reagan administration"
+    },
+    {
+      "word": "OSCAR MAYER",
+      "circlePositions": [
+        7
+      ],
+      "difficulty": 2,
+      "clue": "Company with specially designed vehicles that look like hot dogs"
+    },
+    {
+      "word": "NATHANS",
+      "circlePositions": [
+        5
+      ],
+      "difficulty": 3,
+      "clue": "Company that sponsors an annual hot-dog-eating contest"
+    },
+    {
+      "word": "ALL-BEEF",
+      "circlePositions": [
+        6
+      ],
+      "difficulty": 1,
+      "clue": "Like the composition of many kosher hot dogs"
+    },
+    {
+      "word": "YAHOO",
+      "circlePositions": [
+        3
+      ],
+      "difficulty": 2,
+      "clue": "Internet company with a name that is similar to \"Hot Dog!\""
+    },
+    {
+      "word": "CONEY ISLAND",
+      "circlePositions": [
+        4
+      ],
+      "difficulty": 1,
+      "clue": "New York neighborhood after which a type of hot dog is named"
+    },
+    {
+      "word": "DAREDEVIL",
+      "circlePositions": [
+        4
+      ],
+      "difficulty": 1,
+      "clue": "Blind Marvel hero whose name is a synonym for \"hot dog\""
+    },
+    {
+      "word": "FRANK-N-FURTER",
+      "circlePositions": [
+        11
+      ],
+      "difficulty": 2,
+      "clue": "\"Rocky Horror Picture Show\" character with a hot-dog-adjacent name"
+    }
+  ]
+}

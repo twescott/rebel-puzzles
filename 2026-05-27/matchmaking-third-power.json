@@ -1,0 +1,46 @@
+{
+  "title": "Matchmaking",
+  "subtitle": "",
+  "finalAnswer": "THIRDPOWER",
+  "relation": "Clue → Object",
+  "description": "There is a single word that each answer has in common. Either the answer is a specific example of this word, or the answer paired with this word forms a specific example of this word. For example, if the word were DOG, both TERRIER and BULL would be acceptable answers.",
+  "crosswordHint": "CUBISM",
+  "findItAnswer": "BOXES",
+  "crosswordUrl": "https://rebel-the-dog.com/puzzles/crossword-05272026.html",
+  "findItUrl": "https://rebel-the-dog.com/puzzles/find-it-05272026.html",
+  "matches": [
+    { "left": "Marvel item of power", "right": "TESSERACT", "circlePos": 1 },
+    { "left": "Tool in the video game Portal", "right": "WEIGHTED COMPANION", "circlePos": 5 },
+    { "left": "Drink cooler", "right": "ICE", "circlePos": 1 },
+    { "left": "Drink sweetener", "right": "SUGAR", "circlePos": 5 },
+    { "left": "Yahtzee requirement", "right": "SIX-SIDED DIE", "circlePos": 7 },
+    { "left": "Luggage option", "right": "PACKING", "circlePos": 1 },
+    { "left": "Soup stock", "right": "BOUILLON", "circlePos": 2 },
+    { "left": "Outs in a perfect game", "right": "TWENTY-SEVEN", "circlePos": 2 },
+    { "left": "Nintendo console", "right": "GAME", "circlePos": 4 },
+    { "left": "Star Trek menace", "right": "BORG SHIP", "circlePos": 3 }
+  ],
+  "decoys": [
+    "SCORECARD",
+    "PORTAL GUN",
+    "STRIKE",
+    "FREEZER",
+    "HONEY",
+    "BROTH",
+    "INFINITY STONE",
+    "KLINGONS",
+    "SWITCH",
+    "SUITCASE",
+    "SIXTEEN"
+  ],
+  "coverExample": {
+    "relation": "Owner → Pet",
+    "finalAnswer": "DOG",
+    "matches": [
+      { "left": "Jon Arbuckle", "right": "Odie", "circlePos": 2 },
+      { "left": "Charlie Brown", "right": "Snoopy", "circlePos": 3 },
+      { "left": "Hagrid", "right": "Fang", "circlePos": 4 }
+    ],
+    "decoys": ["Otto", "Hobbes", "Old Yeller", "Scooby-Doo"]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "title": "Matchmaking",
+  "subtitle": "",
+  "finalAnswer": "ETPHONEHOME",
+  "relation": "Movie Quote → Character Who Said It",
+  "crosswordHint": "CATCHPHRASE",
+  "findItAnswer": "QUOTE",
+  "description": "The circled letters will spell out a classic movie quote from a character whose real name is never given. Count letters only — ignore spaces and punctuation. Not all answers will fill the available letter blanks.",
+  "matches": [
+    { "left": "\"Toto, I've a feeling we're not in Kansas anymore.\"", "right": "DOROTHY GALE", "circlePos": 11 },
+    { "left": "\"A census taker once tried to test me. I ate his liver with some fava beans and a nice Chianti.\"", "right": "HANNIBAL LECTER", "circlePos": 12 },
+    { "left": "\"No, I did not eat grass as a child; and yes, I've always been green\"", "right": "ELPHABA", "circlePos": 3 },
+    { "left": "\"As God is my witness, I'll never be hungry again.\"", "right": "SCARLETT O'HARA", "circlePos": 10 },
+    { "left": "\"Yo, Adrian!\"", "right": "ROCKY BALBOA", "circlePos": 2 },
+    { "left": "\"Even in a stupid, stupid universe where we have hot dogs for fingers, we get very good with our feet.\"", "right": "EVELYN WANG", "circlePos": 6 },
+    { "left": "\"Today is a good day to die\"", "right": "LIEUTENANT WORF", "circlePos": 3 },
+    { "left": "\"I have always depended on the kindness of strangers.\"", "right": "BLANCHE DUBOIS", "circlePos": 6 },
+    { "left": "\"I'm the king of the world!\"", "right": "JACK DAWSON", "circlePos": 9 },
+    { "left": "\"There's no crying in baseball!\"", "right": "JIMMY DUGAN", "circlePos": 3 },
+    { "left": "\"All right, Mr. DeMille, I'm ready for my close-up.\"", "right": "NORMA DESMOND", "circlePos": 7 }
+  ],
+  "decoys": [
+    "APOLLO CREED",
+    "CLARICE STARLING",
+    "JOBU TUPAKI",
+    "MIRABEL MADRIGAL",
+    "MOANA",
+    "MULAN",
+    "MAMMY",
+    "THE MANDALORIAN"
+  ],
+  "coverExample": {
+    "relation": "Owner → Pet",
+    "finalAnswer": "DOG",
+    "matches": [
+      { "left": "Jon Arbuckle", "right": "Odie", "circlePos": 2 },
+      { "left": "Charlie Brown", "right": "Snoopy", "circlePos": 3 },
+      { "left": "Hagrid", "right": "Fang", "circlePos": 4 }
+    ],
+    "decoys": ["Otto", "Hobbes", "Old Yeller", "Scooby-Doo"]
+  }
+}

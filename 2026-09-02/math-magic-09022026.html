@@ -1,0 +1,103 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Math Magic — 2026-09-02</title><style>
+  @page{size:letter landscape;margin:0}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Georgia,'Times New Roman',serif;color:#111}
+  .sheet{width:11in;height:8.5in;padding:0.45in 0.6in;page-break-after:always;display:flex;flex-direction:column}
+  .sheet:last-child{page-break-after:auto}
+  /* ALL THREE pages use this same centred header block — do not left-align one of them */
+  .brandbar{border-bottom:1.5pt solid #111;padding-bottom:6pt;margin-bottom:10pt;text-align:center}
+  .eyebrow{font-family:Arial,Helvetica,sans-serif;font-size:8.5pt;letter-spacing:1.5px;text-transform:uppercase;color:#666}
+  h1{font-size:26pt;margin:2pt 0 0}
+  h2{font-family:Arial,Helvetica,sans-serif;font-size:10pt;letter-spacing:1.5px;text-transform:uppercase;margin:12pt 0 5pt;color:#444}
+  .body{font-size:10.5pt;line-height:1.45;margin:0 0 8pt}
+  .instr{font-size:10pt;line-height:1.4;margin:0 0 9pt}
+  .brandbar.center{text-align:center}
+  .instr.center{text-align:center;max-width:8.2in;margin-left:auto;margin-right:auto;
+                font-size:9.5pt;margin-bottom:7pt}
+  .cols{display:flex;gap:26pt;flex:1}
+  .col{flex:1}
+  /* chain — answer blanks form a column centred on the page, operation beneath each,
+     running-total blank off to the right. Written to fit ten entries on ONE page. */
+  .chain{margin:0}
+  /* colhead MUST use the same grid + gap as .erow or the labels drift off their columns */
+  .colhead{display:grid;grid-template-columns:1fr 2in 1fr;column-gap:10pt;align-items:end;margin:0 0 2pt}
+  .colhead .a{grid-column:2;text-align:center}
+  .colhead .r{grid-column:3;display:flex;justify-content:flex-end}
+  .colhead .r span{width:1.1in;text-align:center}
+  .colhead .a,.colhead .r span{font-family:Arial,Helvetica,sans-serif;font-size:7pt;letter-spacing:1.2px;
+               text-transform:uppercase;color:#999}
+  /* align-items:START, not end. A long clue wraps to two lines and makes the row taller;
+     with end-alignment the blank drops to the bottom of that row and no longer sits on the
+     clue's first line. Start-alignment keeps blank, clue and running total on one line. */
+  .erow{display:grid;grid-template-columns:1fr 2in 1fr;align-items:start;column-gap:10pt}
+  .clue{grid-column:1;text-align:left;padding-left:0.3in;font-size:9pt;line-height:1.25}
+  .clue .n{color:#aaa;font-family:Arial,Helvetica,sans-serif;font-size:8pt;margin-right:3pt}
+  .blank{grid-column:2;border-bottom:1pt solid #333;height:14pt}
+  .val{grid-column:2;border-bottom:1pt solid #333;height:14pt;text-align:center;
+       font-weight:700;font-size:11.5pt;line-height:13pt}
+  .rtcell{grid-column:3;align-self:start;display:flex;justify-content:flex-end}
+  .rt{width:1.1in;border-bottom:1pt solid #aaa;height:14pt;text-align:center;
+      font-size:10pt;line-height:13pt;color:#555}
+  .conn{text-align:center;font-size:8.5pt;font-style:italic;color:#555;margin:1.5pt 0 3pt}
+  /* final row uses the SAME grid as .erow so the label sits in the clue column and the
+     answer blank lines up exactly with the answer column above it */
+  .finalrow{display:grid;grid-template-columns:1fr 2in 1fr;column-gap:10pt;align-items:start;
+            margin-top:7pt;border-top:1.2pt solid #111;padding-top:7pt}
+  .finallbl{grid-column:1;text-align:left;padding-left:0.3in;font-size:11pt;font-weight:700;line-height:18pt}
+  .target{grid-column:2;border-bottom:1.5pt solid #111;height:19pt;
+          text-align:center;font-weight:700;font-size:14pt;line-height:17pt}
+  /* The example uses the SAME chain grid as the puzzle page, so it must have ZERO horizontal
+     padding/border — any side inset narrows the grid container and shifts the clue and
+     running-total columns relative to pages 2 and 3. Inset is vertical rules only. */
+  .ex{padding:8pt 0;background:#fafafa;border-top:1pt solid #bbb;border-bottom:1pt solid #bbb}
+  .ex .excap{padding-left:0.3in}
+  .ak-title{font-family:Arial,Helvetica,sans-serif;font-size:11pt;letter-spacing:2px;text-transform:uppercase;color:#444}
+  .ak-sub{font-size:17pt;font-weight:700;margin:1pt 0 9pt}
+  .hints{border-top:0.5pt solid #aaa;margin-top:9pt;padding-top:6pt;font-size:9.5pt}
+  .hints .h{font-family:Arial,Helvetica,sans-serif;font-size:8pt;letter-spacing:1px;text-transform:uppercase;color:#666;margin-bottom:3pt}
+  .feedback{border-top:0.5pt solid #aaa;padding-top:7pt;margin-top:10pt}
+  .feedback.bottom{margin-top:auto}
+  .feedback-title{font-family:Arial,Helvetica,sans-serif;font-size:8pt;font-weight:700;letter-spacing:1px;margin-bottom:4pt}
+  .feedback-line{font-size:9pt;margin-bottom:4pt}
+  .feedback-drink{font-size:8pt;font-style:italic;text-align:center;margin-top:5pt}
+  .feedback-cc{font-family:Arial,Helvetica,sans-serif;font-size:7.5pt;text-align:center;color:#888;margin-top:4pt}
+  .copyr{font-family:Arial,Helvetica,sans-serif;font-size:7.5pt;text-align:center;color:#888;margin-top:auto;padding-top:8pt}
+</style></head><body>
+  <div class="sheet">
+    <div class="brandbar"><div class="eyebrow">Growlerz Trivia Night &middot; 9/2/2026</div><h1>Rebel&rsquo;s Puzzles</h1></div>
+    <p class="body">Rebel&rsquo;s Puzzles is a social experiment being conducted by Rebel&rsquo;s Dad on the patrons of Growlerz Trivia Night. He thinks this will be a fun addition to Caryn&rsquo;s awesome trivia questions. Like Rebel, Rebel&rsquo;s Dad responds well to feedback. Train him well.</p>
+    <h2>Tonight&rsquo;s Puzzle &mdash; Math Magic</h2>
+    <p class="body">Answer each clue with a number, then follow the instruction beneath it. Work strictly top to bottom — each step acts on the running total so far, NOT on the individual numbers. The final result will be the answer to life, the universe, and everything.</p>
+    <p class="body"><b>Scoring.</b> 1 point per correct answer (10 possible), plus 5 points for the correct final result.</p>
+    <h2>Example</h2>
+    <div class="ex">
+      <p class="instr excap" style="margin-bottom:6pt">Three clues, worked through top to bottom:</p>
+      <div class="chain"><div class="colhead"><div class="a">answer</div><div class="r"><span>running total</span></div></div><div class="erow"><div class="clue"><span class="n">1.</span>Number of Dalmatians in a 1961 Disney movie</div><div class="val">101</div><div class="rtcell"><div class="rt">101</div></div></div><div class="conn">take the total so far and add</div><div class="erow"><div class="clue"><span class="n">2.</span>Number of sides on a dodecahedron</div><div class="val">12</div><div class="rtcell"><div class="rt">113</div></div></div><div class="conn">then take the current total and subtract</div><div class="erow"><div class="clue"><span class="n">3.</span>Number of floating bridges crossing Lake Washington</div><div class="val">3</div><div class="rtcell"><div class="rt">110</div></div></div></div>
+      <div class="finalrow"><div class="finallbl">Final Answer</div><div class="target">110</div></div>
+    </div>
+    <div class="feedback bottom">
+      <div class="feedback-drink">Like the puzzle? Buy Rebel a Pup Cup, or her dad a drink. Find a mistake? Rebel&rsquo;s Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+      <div class="feedback-cc">Rebel&rsquo;s Puzzles &middot; rebel-the-dog.com &middot; Growlerz Trivia Night 9/2/2026 &middot; &#169; Tim Wescott &middot; Licensed under CC BY-SA 4.0</div>
+    </div>
+  </div>
+  <div class="sheet">
+    <div class="brandbar center"><div class="eyebrow">Rebel&rsquo;s Puzzles &middot; Growlerz Trivia Night 9/2/2026</div><h1>Math Magic</h1></div>
+    <p class="instr center">Answer each clue with a number, then follow the instruction beneath it. Work strictly top to bottom — each step acts on the running total so far, NOT on the individual numbers. The final result will be the answer to life, the universe, and everything. <b>1 point per correct answer (10 possible), plus 5 points for the correct final result.</b></p>
+    <div class="chain"><div class="colhead"><div class="a">answer</div><div class="r"><span>running total</span></div></div><div class="erow"><div class="clue"><span class="n">1.</span>Regular season home runs hit by Cal Raleigh in 2025</div><div class="blank"></div><div class="rtcell"><div class="rt"></div></div></div><div class="conn">take the total so far and add</div><div class="erow"><div class="clue"><span class="n">2.</span>Character played by Millie Bobby Brown on Stranger Things</div><div class="blank"></div><div class="rtcell"><div class="rt"></div></div></div><div class="conn">then take the current total and subtract</div><div class="erow"><div class="clue"><span class="n">3.</span>Number of children of Edmund and Violet Bridgerton</div><div class="blank"></div><div class="rtcell"><div class="rt"></div></div></div><div class="conn">now divide the total by</div><div class="erow"><div class="clue"><span class="n">4.</span>Number of teaspoons in a tablespoon</div><div class="blank"></div><div class="rtcell"><div class="rt"></div></div></div><div class="conn">take the current total and subtract</div><div class="erow"><div class="clue"><span class="n">5.</span>"My baby is a ___" — lyric from Beyoncé's Countdown</div><div class="blank"></div><div class="rtcell"><div class="rt"></div></div></div><div class="conn">then add</div><div class="erow"><div class="clue"><span class="n">6.</span>Number of counties in Washington State</div><div class="blank"></div><div class="rtcell"><div class="rt"></div></div></div><div class="conn">now multiply the total by</div><div class="erow"><div class="clue"><span class="n">7.</span>Lowest positive prime number</div><div class="blank"></div><div class="rtcell"><div class="rt"></div></div></div><div class="conn">then raise the total to the power of</div><div class="erow"><div class="clue"><span class="n">8.</span>Vision ____: Seattle's traffic safety goal</div><div class="blank"></div><div class="rtcell"><div class="rt"></div></div></div><div class="conn">now multiply the total by</div><div class="erow"><div class="clue"><span class="n">9.</span>First half of Dictionary.com's 2025 Word of the Year</div><div class="blank"></div><div class="rtcell"><div class="rt"></div></div></div><div class="conn">and finally multiply the total by</div><div class="erow"><div class="clue"><span class="n">10.</span>Second half of Dictionary.com's 2025 Word of the Year</div><div class="blank"></div><div class="rtcell"><div class="rt"></div></div></div></div>
+    <div class="finalrow"><div class="finallbl">Final Answer</div><div class="target"></div></div>
+    <div class="feedback bottom">
+      <div class="feedback-title">FEEDBACK</div>
+      <div class="feedback-line">Did you like this puzzle? &nbsp;&#9744; Yes &nbsp;&#9744; No &nbsp;&nbsp;&nbsp; How was the difficulty? &nbsp;&#9744; Too Easy &nbsp;&#9744; Just Right &nbsp;&#9744; Too Hard</div>
+      <div class="feedback-line">Did you like the Crossword? &nbsp;&#9744; Yes &nbsp;&#9744; No &nbsp;&nbsp;&nbsp; Did you like the Clean Up!? &nbsp;&#9744; Yes &nbsp;&#9744; No</div>
+      <div class="feedback-drink">Like the puzzle? Buy Rebel a Pup Cup, or her dad a drink. Find a mistake? Rebel&rsquo;s Dad will buy you a drink (but Rebel would still prefer a Pup Cup).</div>
+      <div class="feedback-cc">Rebel&rsquo;s Puzzles &middot; rebel-the-dog.com &middot; &#169; Tim Wescott &middot; Licensed under CC BY-SA 4.0</div>
+    </div>
+  </div>
+  <div class="sheet">
+    <div class="brandbar"><div class="eyebrow">Answer Key</div><h1>Math Magic &mdash; Answer Key</h1></div>
+    <div class="chain"><div class="colhead"><div class="a">answer</div><div class="r"><span>running total</span></div></div><div class="erow"><div class="clue"><span class="n">1.</span>Regular season home runs hit by Cal Raleigh in 2025</div><div class="val">60</div><div class="rtcell"><div class="rt">60</div></div></div><div class="conn">take the total so far and add</div><div class="erow"><div class="clue"><span class="n">2.</span>Character played by Millie Bobby Brown on Stranger Things</div><div class="val">11</div><div class="rtcell"><div class="rt">71</div></div></div><div class="conn">then take the current total and subtract</div><div class="erow"><div class="clue"><span class="n">3.</span>Number of children of Edmund and Violet Bridgerton</div><div class="val">8</div><div class="rtcell"><div class="rt">63</div></div></div><div class="conn">now divide the total by</div><div class="erow"><div class="clue"><span class="n">4.</span>Number of teaspoons in a tablespoon</div><div class="val">3</div><div class="rtcell"><div class="rt">21</div></div></div><div class="conn">take the current total and subtract</div><div class="erow"><div class="clue"><span class="n">5.</span>"My baby is a ___" — lyric from Beyoncé's Countdown</div><div class="val">10</div><div class="rtcell"><div class="rt">11</div></div></div><div class="conn">then add</div><div class="erow"><div class="clue"><span class="n">6.</span>Number of counties in Washington State</div><div class="val">39</div><div class="rtcell"><div class="rt">50</div></div></div><div class="conn">now multiply the total by</div><div class="erow"><div class="clue"><span class="n">7.</span>Lowest positive prime number</div><div class="val">2</div><div class="rtcell"><div class="rt">100</div></div></div><div class="conn">then raise the total to the power of</div><div class="erow"><div class="clue"><span class="n">8.</span>Vision ____: Seattle's traffic safety goal</div><div class="val">0</div><div class="rtcell"><div class="rt">1</div></div></div><div class="conn">now multiply the total by</div><div class="erow"><div class="clue"><span class="n">9.</span>First half of Dictionary.com's 2025 Word of the Year</div><div class="val">6</div><div class="rtcell"><div class="rt">6</div></div></div><div class="conn">and finally multiply the total by</div><div class="erow"><div class="clue"><span class="n">10.</span>Second half of Dictionary.com's 2025 Word of the Year</div><div class="val">7</div><div class="rtcell"><div class="rt">42</div></div></div></div>
+    <div class="finalrow"><div class="finallbl">Final Answer</div><div class="target">42</div></div>
+    <div class="hints"><div class="h">Hints from this week&rsquo;s puzzles</div>
+      Crossword theme: <strong>FORTYTWO</strong> &nbsp;&middot;&nbsp; Clean Up! answer: <strong>FORTYTWO</strong></div>
+    <div class="copyr">&#169; Tim Wescott &nbsp;|&nbsp; Licensed under CC BY-SA 4.0</div>
+  </div></body></html>

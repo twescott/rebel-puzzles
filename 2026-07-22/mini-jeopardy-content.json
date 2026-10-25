@@ -1,0 +1,50 @@
+{
+  "CATS": [
+    {
+      "name": "DOGS",
+      "type": "What are",
+      "clues": [
+        { "v": 1, "clue": "This vocal breed also serves as the University of Washington mascot", "ans": "Huskies" },
+        { "v": 2, "clue": "These racing dogs are known for moving fast without the help of buses", "ans": "Greyhounds" },
+        { "v": 3, "clue": "These rescuers use the catchphrase “No job too big, no pup too small!”", "ans": "the Paw Patrol" },
+        { "v": 4, "clue": "Originally called “Islands of the Dogs,” this vacation spot was likely named after monk seals.", "ans": "the Canary Islands" }
+      ]
+    },
+    {
+      "name": "MOTHERS",
+      "type": "Who is",
+      "clues": [
+        { "v": 1, "clue": "Bart, Maggie, and Lisa are children of this Springfield woman", "ans": "Marge Simpson" },
+        { "v": 2, "clue": "Hardly radioactive, this Nobel Prize winner was the wife and mother to other Nobel Prize winners", "ans": "Marie Curie" },
+        { "v": 3, "clue": "Known as the father of the League of Nations, this president also signed the law establishing Mother’s Day as a United States holiday.", "ans": "Woodrow Wilson" },
+        { "v": 4, "clue": "In Jewish myth, her children are said to be demons, but it was the child of her husband’s second wife who was the world’s first murderer.", "ans": "Lilith" }
+      ]
+    },
+    {
+      "name": "CANADA, EH?",
+      "type": "What is",
+      "clues": [
+        { "v": 1, "clue": "Along with French, one of two official languages of Canada", "ans": "English" },
+        { "v": 2, "clue": "This Scottish city shares its name with an upscale neighborhood in Ottawa and an island in the Nunavut Territory", "ans": "Edinburgh" },
+        { "v": 3, "clue": "Once produced by the Ohio Art Company, this classic toy is now owned by Spin Master of Canada.", "ans": "Etch A Sketch" },
+        { "v": 4, "clue": "Heading for the tropics in this geological period 56 to 34 million years ago would have meant visiting Canada.", "ans": "the Eocene Epoch" }
+      ]
+    },
+    {
+      "name": "PEOPLE WHO HAVE NEVER BEEN IN MY KITCHEN",
+      "type": "Who is",
+      "clues": [
+        { "v": 1, "clue": "Before moving to Seattle to start his own sitcom, this Psychologist was a regular at Cheers", "ans": "Frasier Crane" },
+        { "v": 2, "clue": "Although he played a womanizer on Cheers, this actor has been married to Mary Steenburgen for more than 30 years", "ans": "Ted Danson" },
+        { "v": 3, "clue": "This mailman, a regular at Cheers, had unexpected success on the game show Jeopardy, before losing it all on the final question.", "ans": "Cliff Clavin" },
+        { "v": 4, "clue": "This actress made the illogical choice to let her Star Trek character be recast and instead joined the cast of Cheers after the departure of Shelley Long.", "ans": "Kirstie Alley" }
+      ]
+    }
+  ],
+  "FINAL": {
+    "cat": "FINAL JEOPARDY!",
+    "type": "Who are",
+    "clue": "Official hosts of Jeopardy! since its inception in 1964",
+    "ans": "Art Fleming, Alex Trebek, Mike Richards, Mayim Bialik, and Ken Jennings"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Four Packs",
+  "crosswordHint": "CAKE MIX",
+  "findItAnswer": "SWEET",
+  "groups": [
+    { "tier": "yellow", "connection": "CAKE INGREDIENTS", "words": ["BUTTER", "SUGAR", "BAKING SODA", "SALT"] },
+    { "tier": "green",  "connection": "____ PIE", "words": ["CHERRY", "APPLE", "PECAN", "PUMPKIN"] },
+    { "tier": "blue",   "connection": "BAKED GOODS", "words": ["CAKE", "TART", "DOUGHNUT", "CRUMBLE"] },
+    { "tier": "purple", "connection": "INGREDIENTS IN A TACO", "words": ["CHICKEN", "CHEESE", "SALSA", "AVOCADO"] }
+  ]
+}

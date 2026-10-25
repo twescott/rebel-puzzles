@@ -1,0 +1,17 @@
+{
+  "title": "Four Packs",
+  "crosswordHint": "FALL FOLIAGE",
+  "findItAnswer": "SEASON",
+  "quote": {
+    "text": "Autumn carries more gold in its pocket than all the other seasons.",
+    "author": "Jim Bishop",
+    "authorNote": "American journalist and author",
+    "tier": "green"
+  },
+  "groups": [
+    { "tier": "yellow", "connection": "Colors of the rainbow", "words": ["RED", "INDIGO", "YELLOW", "GREEN"] },
+    { "tier": "green",  "connection": "Words that complete the quote", "words": ["AUTUMN", "GOLD", "POCKET", "SEASONS"] },
+    { "tier": "blue",   "connection": "Words that follow Pocket", "words": ["VETO", "ROCKET", "WATCH", "MONEY"] },
+    { "tier": "purple", "connection": "Parts of a mechanical watch", "words": ["SPRING", "GEAR", "ROTOR", "LEVER"] }
+  ]
+}
